@@ -1,0 +1,22 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer mode="side">
+    <mat-nav-list>
+      <mat-list-item [routerLink]="['/Home']">
+        <span class="full-width">Accueil</span>
+        <mat-icon mat-list-icon>library_music</mat-icon>
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/ListPersonnages']">
+        <span class="full-width">Liste des personnages</span>
+        <mat-icon mat-list-icon>library_music</mat-icon>
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/HistoriqueTournois']">
+        <span class="full-width">Historique des tournois</span>
+        <mat-icon mat-list-icon>library_music</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content class="sidenav_container">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

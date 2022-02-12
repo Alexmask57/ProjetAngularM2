@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="drawer.toggleDrawer()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a [routerLink]="['/']">
+    <img id="logo" src="assets/Logo.png" alt="Smash Icon" height="50" />
+    <img id="logoTitle" src="assets/LogoTitle.png" alt="Smash Icon" height="50"  />
+  </a>
+
+  <span class="example-spacer"></span>
+
+  <a href="https://github.com/Alexmask57/AngularTpNote" target="_blank">
+    <button mat-icon-button>
+      <i class="bi bi-github"></i>
+    </button>
+  </a>
+</mat-toolbar>
