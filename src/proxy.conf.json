@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://smashbros-unofficial-api.vercel.app",
+    "target": "https://smashbros-unofficial-api.vercel.app/api/v1/ultimate/characters",
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": {

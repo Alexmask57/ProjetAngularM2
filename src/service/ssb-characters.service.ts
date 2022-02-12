@@ -22,7 +22,7 @@ export interface Character {
 })
 export class SsbCharactersService {
 
-  private url = "https://smashbros-unofficial-api.vercel.app/api/v1/ultimate/characters"
+  private url = "http://localhost:4200/api"
 
   constructor(private readonly http: HttpClient) { }
 
