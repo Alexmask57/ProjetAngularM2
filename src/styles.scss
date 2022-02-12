@@ -4,3 +4,26 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.light{
+  --primary-base-color: #ffffff;
+  --secondary-base-color: #d62828;
+  --primary-text-color: #003049;
+  --secondary-text-color: #ffffff;
+}
+
+.dark{
+  --primary-base-color: #003049;
+  --secondary-base-color: #005380;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #ffffff;
+}
+
+.btn-smash {
+  background-color: var(--secondary-base-color)!important;
+  color: var(--secondary-text-color)!important;
+}
+.btn-smash:hover {
+  filter: brightness(85%);
+}

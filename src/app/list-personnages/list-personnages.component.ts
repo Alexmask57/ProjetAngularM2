@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPersonnagesComponent implements OnInit {
 
+  view:string = "card";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  switchView() {
+    if(this.view==="card"){
+      this.view = "list"
+    }
+    else{
+      this.view = "card";
+    }
   }
 
 }

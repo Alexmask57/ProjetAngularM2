@@ -5,20 +5,30 @@
     <label>Recherche</label>
     <input #recherchePersonnage type="text" placeholder="Mario">
   </div>
-<div class="row">
-  <div class="col-md-3">
-    <card-personnage></card-personnage>
+<div [ngSwitch]="view" >
+  <div *ngSwitchCase="'card'" class="row">
+    <div class="col-md-3">
+      <card-personnage></card-personnage>
+    </div>
+    <div class="col-md-3">
+      <card-personnage></card-personnage>
+    </div>
+    <div class="col-md-3">
+      <card-personnage></card-personnage>
+    </div>
+    <div class="col-md-3">
+      <card-personnage></card-personnage>
+    </div>
   </div>
-  <div class="col-md-3">
-    <card-personnage></card-personnage>
-  </div>
-  <div class="col-md-3">
-    <card-personnage></card-personnage>
-  </div>
-  <div class="col-md-3">
-    <card-personnage></card-personnage>
-  </div>
-</div>
+  <section *ngSwitchCase="'list'">
 
+  </section>
+</div>
+  <section class="buttons-fab">
+    <button (click)="switchView()" mat-fab class="btn-switch">
+      <em class="material-icons" *ngIf="view === 'card'">list</em>
+      <em class="material-icons" *ngIf="view === 'list'">view_stream</em>
+    </button>
+  </section>
 </div>
 
