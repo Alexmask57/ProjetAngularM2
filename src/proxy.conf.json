@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://smashbros-unofficial-api.vercel.app",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
