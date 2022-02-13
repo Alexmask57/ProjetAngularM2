@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   db:
-    image: mysql:5.5
+    image: mysql:latest
     volumes:
       - "./DB:/docker-entrypoint-initdb.d"
     ports:
