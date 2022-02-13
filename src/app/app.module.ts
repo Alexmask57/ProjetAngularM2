@@ -26,6 +26,8 @@ import {MatChipsModule} from "@angular/material/chips";
 import { ListPersonnagesComponent } from './list-personnages/list-personnages.component';
 import { CardPersonnageComponent } from './list-personnages/card-personnage/card-personnage.component';
 import { HistoriqueTournoisComponent } from './historique-tournois/historique-tournois.component';
+import { ListParticipantsComponent } from './list-participants/list-participants.component';
+import { CardParticipantsComponent } from './list-participants/card-participants/card-participants.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { HistoriqueTournoisComponent } from './historique-tournois/historique-to
     HomeComponent,
     ListPersonnagesComponent,
     CardPersonnageComponent,
-    HistoriqueTournoisComponent
+    HistoriqueTournoisComponent,
+    ListParticipantsComponent,
+    CardParticipantsComponent
   ],
   imports: [
     HttpClientModule,

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Liste des personnages</h1>
+  <h1>Liste des participants</h1>
   <div #divRecherchePersonnage>
     <label>Recherche</label>
     <input #recherchePersonnage type="text" placeholder="Mario">
@@ -33,19 +33,15 @@
     </div>
   </div>
 </ng-template>
+
 <ng-template #displayCharacters [ngSwitch]="view">
   <div *ngSwitchCase="'card'" class="row">
-    <div *ngFor="let personnage of Personnages" class="col-md-3">
-      <card-personnage [personnage]="personnage"></card-personnage>
+    <div *ngFor="let participant of Participants" class="col-md-3">
+      <card-participants [participant]="participant"></card-participants>
     </div>
   </div>
   <section *ngSwitchCase="'list'">
-    <mat-list>
-      <mat-list-item *ngFor="let personnage of Personnages" class="mat-whiteframe-2dp mat-card">
-        <img mat-list-avatar src="{{ personnage?.images?.icon }}" alt="Icone personnage"/>
-        <h3 mat-line>{{ personnage?.name }} </h3>
-      </mat-list-item>
-    </mat-list>
+
   </section>
 </ng-template>
 
