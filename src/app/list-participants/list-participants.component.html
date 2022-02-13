@@ -1,1 +1,47 @@
-<p>list-participants works!</p>
+<div class="container">
+  <h1>Liste des participants</h1>
+  <div #divRecherchePersonnage>
+    <label>Recherche</label>
+    <input #recherchePersonnage type="text" placeholder="Mario">
+  </div>
+  <div *ngIf="loading === true; then displayLoading else displayCharacters"></div>
+  <section class="buttons-fab">
+    <button (click)="switchView()" mat-fab class="btn-switch">
+      <em class="material-icons" *ngIf="view === 'card'">list</em>
+      <em class="material-icons" *ngIf="view === 'list'">view_stream</em>
+    </button>
+  </section>
+</div>
+
+<ng-template #displayLoading>
+  <div class="loadingPacman">
+
+
+    <div class="loadingio-spinner-bean-eater-pzaqmb9bvy">
+      <div class="ldio-9ed3khaa6gb">
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #displayCharacters [ngSwitch]="view">
+  <div *ngSwitchCase="'card'" class="row">
+    <div *ngFor="let participant of Participants" class="col-md-3">
+      <card-participants [participant]="participant"></card-participants>
+    </div>
+  </div>
+  <section *ngSwitchCase="'list'">
+
+  </section>
+</ng-template>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Character, SsbCharactersService} from "../../service/ssb-characters.service";
 
 @Component({
   selector: 'list-personnages',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPersonnagesComponent implements OnInit {
 
+  loading: boolean = false;
+  Personnages: Character[] = [];
   view:string = "card";
 
-  constructor() { }
+  constructor(private readonly SsbCharactersService: SsbCharactersService) {
+    this.SsbCharactersService.fetch().subscribe(Characters => {
+      this.Personnages = Characters || [];
+    });
+  }
 
   ngOnInit(): void {
   }

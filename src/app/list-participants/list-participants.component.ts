@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Character} from "../../service/ssb-characters.service";
+import {Participant} from "../../models/Participant";
 
 @Component({
   selector: 'app-list-participants',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListParticipantsComponent implements OnInit {
 
-  constructor() { }
+  loading: boolean = false;
+  Participants: Participant[] = [];
+  view:string = "card";
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  switchView() {
+    if(this.view==="card"){
+      this.view = "list"
+    }
+    else{
+      this.view = "card";
+    }
   }
 
 }
