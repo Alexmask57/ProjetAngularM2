@@ -11,7 +11,7 @@ async function getById(id) {
 }
 
 async function create(user) {
-  const result = await db.query('INSERT INTO user (pseudo, photo) VALUES (?)', [user.pseudo, user.photo]);
+  const result = await db.query('INSERT INTO user (pseudo, photo) VALUES (?, ?)', [user.pseudo, user.photo]);
   return result;
 }
 

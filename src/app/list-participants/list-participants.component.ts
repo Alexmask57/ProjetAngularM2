@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Character} from "../../service/ssb-characters.service";
 import {Participant} from "../../models/Participant";
+import {UserServiceService} from "../../service/user-service.service";
 
 @Component({
   selector: 'app-list-participants',
@@ -13,10 +14,14 @@ export class ListParticipantsComponent implements OnInit {
   Participants: Participant[] = [];
   view:string = "card";
 
-  constructor() {
+  constructor(private readonly userService: UserServiceService) {
   }
 
   ngOnInit(): void {
+    this.userService.fetch().subscribe(list => {
+      this.Participants = list || [];
+      console.log(list);
+    });
   }
 
   switchView() {

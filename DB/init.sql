@@ -26,8 +26,8 @@ COMMIT;
 --
 
 INSERT INTO `user` (`id`, `pseudo`, `photo`) VALUES
-(1, 'jim', ''),
-(2, 'alexmask', '');
+(1, 'jim', 'jim.jpg'),
+(2, 'alexmask', 'alexmask.jpeg');
 
 --
 -- Indexes for dumped tables
