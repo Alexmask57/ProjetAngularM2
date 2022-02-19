@@ -14,12 +14,7 @@ CREATE TABLE `user` (
   `photo` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-COMMIT;
+
 
 --
 -- Dumping data for table `user`
@@ -40,3 +35,9 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+COMMIT;
