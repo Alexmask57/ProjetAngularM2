@@ -8,17 +8,19 @@ import {Character, SsbCharactersService} from "../../service/ssb-characters.serv
 })
 export class ListPersonnagesComponent implements OnInit {
 
-  loading: boolean = false;
+  loading: boolean = true;
   Personnages: Character[] = [];
   view:string = "card";
 
   constructor(private readonly SsbCharactersService: SsbCharactersService) {
-    this.SsbCharactersService.fetch().subscribe(Characters => {
-      this.Personnages = Characters || [];
-    });
+    this.loading = true;
   }
 
   ngOnInit(): void {
+    this.SsbCharactersService.fetch().subscribe(Characters => {
+      this.Personnages = Characters || [];
+    });
+    this.loading = false;
   }
 
   switchView() {
