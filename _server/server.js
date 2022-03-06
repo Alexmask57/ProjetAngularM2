@@ -1,5 +1,7 @@
 import express from "express"
 import * as apiUser from "./apiUser.js"
+import * as apiCharacter from "./apiCharacter.js"
+import * as apiTournament from "./apiTournament.js"
 import {url} from "./url.js";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -29,6 +31,18 @@ app.get(url._userUrl + '/:id', apiUser.getById);
 app.post(url._userUrl, apiUser.create);
 app.put(url._userUrl + '/:id', apiUser.update);
 app.delete(url._userUrl + '/:id', apiUser.remove);
+
+//JSON API PERSONNAGE (FOR INIT PURPOSE ONLY)
+app.post(url._charUrl, apiCharacter.create);
+
+//JSON API TOURNAMENT
+app.get(url._tournamentUrl, apiTournament.listAll);
+app.get(url._tournamentUrl + '/:id', apiTournament.getById);
+app.post(url._tournamentUrl, apiTournament.create);
+app.put(url._tournamentUrl + '/:id', apiTournament.update);
+app.delete(url._tournamentUrl + '/:id', apiTournament.remove);
+
+app.put(url._tournamentUrl + '/winner/:idM', apiTournament.winnerMatch);
 
 app.listen(app.get('port'), function () {
   console.log('✔ Express server listening on http://localhost:%d/', app.get('port'));

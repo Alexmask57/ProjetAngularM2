@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Character} from "../../service/ssb-characters.service";
+import {Character, SsbCharactersService} from "../../service/ssb-characters.service";
 import {Participant} from "../../models/Participant";
 import {UserServiceService} from "../../service/user-service.service";
 
@@ -14,7 +14,7 @@ export class ListParticipantsComponent implements OnInit {
   Participants: Participant[] = [];
   view:string = "card";
 
-  constructor(private readonly userService: UserServiceService) {
+  constructor(private readonly userService: UserServiceService, private readonly SsbCharactersService: SsbCharactersService) {
   }
 
   ngOnInit(): void {
@@ -22,6 +22,14 @@ export class ListParticipantsComponent implements OnInit {
       this.Participants = list || [];
       console.log(list);
     });
+    //INIT PURPOSE ONLY
+    /*this.SsbCharactersService.fetch().subscribe(Characters => {
+      console.log(Characters);
+      Characters.map(chr => {
+        this.userService.addCharacter(chr.name).subscribe();
+        console.log(chr.name);
+      });
+    });*/
   }
 
   switchView() {

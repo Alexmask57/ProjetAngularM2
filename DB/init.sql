@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Feb 16, 2022 at 10:26 PM
+-- Generation Time: Feb 20, 2022 at 02:16 PM
 -- Server version: 8.0.28
 -- PHP Version: 7.4.4
 
@@ -48,6 +48,91 @@ CREATE TABLE `personnage` (
   `id` int NOT NULL,
   `nom` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `personnage`
+--
+
+INSERT INTO `personnage` (`id`, `nom`) VALUES
+(1, 'Mario'),
+(2, 'Fox'),
+(3, 'Pikachu'),
+(4, 'Luigi'),
+(5, 'Donkey Kong'),
+(6, 'Ness'),
+(7, 'Captain Falcon'),
+(8, 'Jigglypuff'),
+(9, 'Daisy'),
+(10, 'Samus'),
+(11, 'Peach'),
+(12, 'Yoshi'),
+(13, 'Bowser'),
+(14, 'Kirby'),
+(15, 'Sheik'),
+(16, 'Ice Climbers'),
+(17, 'Zelda'),
+(18, 'Dr. Mario'),
+(19, 'Pichu'),
+(20, 'Marth'),
+(21, 'Link'),
+(22, 'Lucina'),
+(23, 'Falco'),
+(24, 'Dark Samus'),
+(25, 'Young Link'),
+(26, 'Ganondorf'),
+(27, 'Mewtwo'),
+(28, 'Meta Knight'),
+(29, 'Roy'),
+(30, 'Mr. Game & Watch'),
+(31, 'Chrom'),
+(32, 'Pit'),
+(33, 'Dark Pit'),
+(34, 'Snake'),
+(35, 'Wario'),
+(36, 'Ike'),
+(37, 'Zero Suit Samus'),
+(38, 'Pokémon Trainer'),
+(39, 'Diddy Kong'),
+(40, 'Lucario'),
+(41, 'Olimar'),
+(42, 'King Dedede'),
+(43, 'Lucas'),
+(44, 'Sonic'),
+(45, 'R.O.B.'),
+(46, 'Toon Link'),
+(47, 'Villager'),
+(48, 'Wolf'),
+(49, 'Wii Fit Trainer'),
+(50, 'Rosalina & Luma'),
+(51, 'Mega Man'),
+(52, 'Little Mac'),
+(53, 'Mii Gunner'),
+(54, 'Mii Brawler'),
+(55, 'Mii Swordfighter'),
+(56, 'Palutena'),
+(57, 'Greninja'),
+(58, 'Pac-Man'),
+(59, 'Robin'),
+(60, 'Shulk'),
+(61, 'Ryu'),
+(62, 'Duck Hunt'),
+(63, 'Bowser Jr.'),
+(64, 'Ken'),
+(65, 'Richter'),
+(66, 'Simon'),
+(67, 'Cloud'),
+(68, 'Ridley'),
+(69, 'Bayonetta'),
+(70, 'King K. Rool'),
+(71, 'Isabelle'),
+(72, 'Incineroar'),
+(73, 'Piranha Plant'),
+(74, 'Joker'),
+(75, 'Hero'),
+(76, 'Banjo & Kazooie'),
+(77, 'Terry'),
+(78, 'Byleth'),
+(79, 'Min Min');
 
 -- --------------------------------------------------------
 
@@ -118,6 +203,14 @@ ALTER TABLE `user`
 --
 ALTER TABLE `combat`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `combat`  ADD `idParent` INT NULL  AFTER `idTournoi`,  ADD `bracketNo` INT NOT NULL  AFTER `idParent`;
+
+--
+-- AUTO_INCREMENT for table `personnage`
+--
+ALTER TABLE `personnage`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `tournoi`
