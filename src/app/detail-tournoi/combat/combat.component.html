@@ -1,0 +1,12 @@
+
+<li>
+  <span class="tf-nc">{{combat?.bracketNo}}</span>
+  <ul>
+    <li *ngFor="let c of combat?.children">
+      <app-combat [combat]="c"></app-combat>
+    </li>
+  </ul>
+</li>
+
+
+

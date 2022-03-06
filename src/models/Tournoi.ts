@@ -1,6 +1,14 @@
+import {Match} from "./Match";
+
 export interface Tournoi {
   id?: string;
-  nombreParticipants: number;
   date: Date;
-  idGagnant: string | undefined;
+  etat: string | undefined;
+}
+
+export interface TournoiDetail {
+  id?: string;
+  date: Date;
+  etat: string | undefined;
+  combats: Match[];
 }

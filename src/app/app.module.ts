@@ -28,6 +28,8 @@ import { CardPersonnageComponent } from './list-personnages/card-personnage/card
 import { HistoriqueTournoisComponent } from './historique-tournois/historique-tournois.component';
 import { ListParticipantsComponent } from './list-participants/list-participants.component';
 import { CardParticipantsComponent } from './list-participants/card-participants/card-participants.component';
+import { DetailTournoiComponent } from './detail-tournoi/detail-tournoi.component';
+import { CombatComponent } from './detail-tournoi/combat/combat.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { CardParticipantsComponent } from './list-participants/card-participants
     CardPersonnageComponent,
     HistoriqueTournoisComponent,
     ListParticipantsComponent,
-    CardParticipantsComponent
+    CardParticipantsComponent,
+    DetailTournoiComponent,
+    CombatComponent
   ],
   imports: [
     HttpClientModule,

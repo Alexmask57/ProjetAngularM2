@@ -1,0 +1,8 @@
+<div>
+  <span>{{tournoi?.etat}}</span>
+</div>
+<div  class="tf-tree">
+  <ul>
+    <app-combat *ngFor="let combat of tournoi?.combats" [combat]="combat"></app-combat>
+  </ul>
+</div>

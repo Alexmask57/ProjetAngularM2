@@ -21,7 +21,7 @@ const getById = async function (req, res) {
   //ajout des combats au tournoi
   tournament[0]["combats"] = list_to_tree(combats.reverse())//reverse pour avoir le dernier match en premier dans la liste
 
-  return res.status(200).json(tournament);
+  return res.status(200).json(tournament[0]);
 }
 
 //create a tournament

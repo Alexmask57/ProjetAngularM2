@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Character, SsbCharactersService} from "../../service/ssb-characters.service";
+import {TournamentServiceService} from "../../service/tournament-service.service";
 
 @Component({
   selector: 'home',
@@ -10,12 +11,12 @@ export class HomeComponent implements OnInit {
 
   list: Character[] = [];
 
-  constructor(private readonly service:SsbCharactersService) { }
+  constructor(private readonly service:TournamentServiceService) { }
 
   ngOnInit(): void {
-    this.service.fetch().subscribe(l => {
-      this.list = l || [];
-      console.log(this.list);
+    this.service.fetchOne("1").subscribe(l => {
+      //this.list = l || [];
+      console.log(l);
     });
   }
 
