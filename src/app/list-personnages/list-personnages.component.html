@@ -2,8 +2,9 @@
   <h1>Liste des personnages</h1>
   <div #divRecherchePersonnage>
     <label>Recherche</label>
-    <input #recherchePersonnage type="text" placeholder="Mario">
+    <input [(ngModel)]="search" type="text" placeholder="Mario" (keyup)="searchOnList()">
   </div>
+  {{loading ? ('true') : ('false')}}
   <div *ngIf="loading == true; then displayLoading else displayCharacters"></div>
   <section class="buttons-fab">
     <button (click)="switchView()" mat-fab class="btn-switch">
@@ -33,13 +34,13 @@
 </ng-template>
 <ng-template #displayCharacters [ngSwitch]="view">
   <div *ngSwitchCase="'card'" class="row">
-    <div *ngFor="let personnage of Personnages" class="col-md-3">
+    <div *ngFor="let personnage of PersonnagesFilter" class="col-md-3">
       <card-personnage [personnage]="personnage"></card-personnage>
     </div>
   </div>
   <section *ngSwitchCase="'list'">
     <mat-list>
-      <mat-list-item *ngFor="let personnage of Personnages" class="mat-whiteframe-2dp mat-card">
+      <mat-list-item *ngFor="let personnage of PersonnagesFilter" class="mat-whiteframe-2dp mat-card">
         <img mat-list-avatar src="{{ personnage?.images?.icon }}" alt="Icone personnage"/>
         <h3 mat-line>{{ personnage?.name }} </h3>
       </mat-list-item>
