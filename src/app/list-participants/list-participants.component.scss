@@ -1,0 +1,25 @@
+.buttons-fab {
+  height: 170px;
+  width: 90px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  animation: ease-in 1s all;
+  transform: translateX(30%);
+}
+
+.btn-switch {
+  background-color: var(--secondary-base-color);
+}
+
+.button-add {
+  background-color: green;
+}
+
+mat-list-item {
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+}
+mat-list-item:hover {
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+}

@@ -10,7 +10,9 @@ export class ListPersonnagesComponent implements OnInit {
 
   loading: boolean = true;
   Personnages: Character[] = [];
+  PersonnagesFilter: Character[] = [];
   view:string = "card";
+  search:string = "";
 
   constructor(private readonly SsbCharactersService: SsbCharactersService) {
     this.loading = true;
@@ -19,7 +21,9 @@ export class ListPersonnagesComponent implements OnInit {
   ngOnInit(): void {
     this.SsbCharactersService.fetch().subscribe(Characters => {
       this.Personnages = Characters || [];
+      this.PersonnagesFilter = this.Personnages;
     });
+
     this.loading = false;
   }
 
@@ -30,6 +34,10 @@ export class ListPersonnagesComponent implements OnInit {
     else{
       this.view = "card";
     }
+  }
+
+  searchOnList(){
+    this.PersonnagesFilter = this.Personnages.filter(perso => perso?.name?.toLowerCase().includes(this.search.toLowerCase()));
   }
 
 }

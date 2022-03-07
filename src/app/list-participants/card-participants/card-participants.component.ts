@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Character} from "../../../service/ssb-characters.service";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Participant} from "../../../models/Participant";
 
 @Component({
@@ -11,9 +10,21 @@ export class CardParticipantsComponent implements OnInit {
 
   @Input() participant: Participant | undefined;
 
+  @Output('participantDelete') delete$: EventEmitter<any> = new EventEmitter();
+
+  @Output('participantUpdate') update$: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  delete() {
+    this.delete$.emit(this.participant);
+  }
+
+  update() {
+    this.update$.emit(this.participant);
   }
 
 }
