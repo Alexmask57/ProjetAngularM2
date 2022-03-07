@@ -1,9 +1,17 @@
+import {Participant} from "./Participant";
+
 export interface Match {
   id?: string;
-  idUser1: string;
-  idUser2: string;
-  idChar1: string | undefined;
-  idChar2: string | undefined;
+  participant1: Participant | undefined;
+  participant2: Participant | undefined;
+  personnage1: {
+    id: string;
+    nom: string;
+  } | undefined;
+  personnage2: {
+    id: string;
+    nom: string;
+  } | undefined;
   winner: string | undefined;
   niveau: string;
   idTournoi: string;

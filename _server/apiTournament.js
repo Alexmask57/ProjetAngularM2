@@ -1,5 +1,8 @@
 import * as sqlTournament from "./services/sqlTournament.js";
 import * as sqlMatch from "./services/sqlMatch.js";
+import * as sqlUser from "./services/sqlUser.js";
+import * as sqlCharacter from "./services/sqlCharacter.js";
+import {base64_encode} from "./encodingUtils.js";
 import _, {map} from 'underscore';
 
 //get all tournaments
@@ -17,10 +20,41 @@ const getById = async function (req, res) {
   console.log('Get tournament id : ' + id);
 
   const tournament = await sqlTournament.getById(id);
-  const combats = await sqlMatch.getByIdTournoi(id);
+  let combats = await sqlMatch.getByIdTournoi(id);
+
+  for(let c of combats) {
+    if(c.idUser1 != 0) {
+      let user = (await sqlUser.getById(c.idUser1))[0];
+      if(user.photo != "")
+        user.photo = base64_encode(user.photo);
+      c["participant1"] = user;
+    }
+    else
+      c["participant1"] = {}
+
+    if(c.idUser2 != 0) {
+      let user = (await sqlUser.getById(c.idUser2))[0];
+      if(user.photo != "")
+        user.photo = base64_encode(user.photo);
+      c["participant2"] = user;
+    }
+    else
+      c["participant2"] = {}
+
+    if(c.idChar1 != 0)
+      c["personnage1"] = (await sqlCharacter.getById(c.idChar1))[0];
+    else
+      c["personnage1"] = {}
+
+    if(c.idChar2 != 0)
+      c["personnage2"] = (await sqlCharacter.getById(c.idChar2))[0];
+    else
+      c["personnage2"] = {}
+  }
+
   //ajout des combats au tournoi
   tournament[0]["combats"] = list_to_tree(combats.reverse())//reverse pour avoir le dernier match en premier dans la liste
-
+  //console.log(combats);
   return res.status(200).json(tournament[0]);
 }
 
@@ -33,11 +67,12 @@ const create = async function (req, res, next) {
 
   try {
     //ajout tournoi bdd
-    var idT = (await sqlTournament.create(json)).insertId;
+    var idT = (await sqlTournament.create(json.participants.length)).insertId;
 
     //generation tournoi
     var tournament = getBracket(idT, json.participants);
-    console.log();
+
+    //console.log('TOURNAMENT : ' + tournament);
 
     //ajout matchs bdd
     for(const combat of tournament) {
@@ -88,13 +123,29 @@ const winnerMatch = async function (req, res, next) {
 
   try {
     //si il s'agit du dernier match du tournoi, on indique que le tournoi est terminé
+    await sqlMatch.setWinner(idM, winner);
     let match = (await sqlMatch.getById(idM))[0];
-    console.log(match);
-    if(match.idParent == null) {
+    //console.log(match);
+    if(match.idParent == null)
       await sqlTournament.setTermine(match.idTournoi);
+    else {
+      //sinon on complete le match suivant
+      let nextMatch = (await sqlMatch.getByBracket(match.idTournoi, match.idParent))[0];
+      if(match.winner == match.idUser1) {
+        if(nextMatch.idUser1 == 0)
+          await sqlMatch.setNextMatch(nextMatch.id, 1, match.idUser1, match.idChar1);
+        else
+          await sqlMatch.setNextMatch(nextMatch.id, 2, match.idUser1, match.idChar1);
+      }
+      else {
+        if(nextMatch.idUser1 == 0)
+          await sqlMatch.setNextMatch(nextMatch.id, 1, match.idUser2, match.idChar2);
+        else
+          await sqlMatch.setNextMatch(nextMatch.id, 2, match.idUser2, match.idChar2);
+      }
     }
 
-    res.json(await sqlMatch.setWinner(idM, winner));
+    res.json();
   } catch (err) {
     console.error("ERROR !! : " + err);
     next(err);
@@ -160,12 +211,12 @@ function getBracket(idTournoi, participants) {
   finalBrackets = brackets.filter(round => round.bye == false);
   //remove init round from lastGames and add idTournoi and add users
   finalBrackets.map(fbRound => {
-    /*fbRound.lastGames = fbRound.lastGames.filter(game =>
+    fbRound.lastGames = fbRound.lastGames.filter(game =>
       {
       let lastRound = brackets.find(bRound => bRound.bracketNo == game);
       return lastRound.bye == false;
       }
-    );*/
+    );
     fbRound.idTournoi = idTournoi;
     if(participants.length > 0) {
       if(fbRound.lastGames.length == 0) {
@@ -181,11 +232,13 @@ function getBracket(idTournoi, participants) {
         fbRound.user1 = participants[index];
         participants.splice(index, 1);
       }
-
+      console.log("Participant after bracket : " + fbRound.bracketNo);
+      console.log(participants);
     }
   }
   );
 
+  //console.log(finalBrackets);
 
   return finalBrackets;
 }

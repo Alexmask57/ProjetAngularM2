@@ -10,8 +10,8 @@ async function getById(id) {
   return row;
 }
 
-async function create(tournament) {
-  const result = await db.query('INSERT INTO tournoi (date, etat) VALUES (?, ?)', [new Date(), "en cours"]);
+async function create(nbParticipants) {
+  const result = await db.query('INSERT INTO tournoi (date, etat, nbParticipants) VALUES (?, ?, ?)', [new Date(), "en cours", nbParticipants]);
   return result;
 }
 

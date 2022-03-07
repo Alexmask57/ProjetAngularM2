@@ -10,6 +10,11 @@ async function getById(id) {
   return row;
 }
 
+async function getByBracket(idT, idB) {
+  const row = await db.query('SELECT * FROM combat WHERE idTournoi = ? AND bracketNo = ?', [idT, idB]);
+  return row;
+}
+
 async function getByIdTournoi(idT) {
   const rows = await db.query('SELECT * FROM combat WHERE idTournoi = ?', [idT]);
   return rows;
@@ -39,6 +44,12 @@ async function removeByIdTournoi(idT) {
 
 async function setWinner(id, winner) {
   const result = await db.query('UPDATE combat SET winner = ? WHERE id = ?', [winner, id]);
+  return result;
 }
 
-export {getAll, getByIdTournoi, getById, create, update, remove, removeByIdTournoi, setWinner}
+async function setNextMatch(id, position, idUser, idChar) {
+  const result = await db.query('UPDATE combat SET idUser' + position + ' = ?, idChar' + position + ' =? WHERE id = ?', [idUser, idChar, id]);
+  return result;
+}
+
+export {getAll, getByIdTournoi, getById, getByBracket, create, update, remove, removeByIdTournoi, setWinner, setNextMatch}

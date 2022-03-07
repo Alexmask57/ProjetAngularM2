@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `combat` (
   `id` int NOT NULL,
   `idUser1` int NOT NULL,
-  `IdChar1` int NOT NULL,
+  `idChar1` int NOT NULL,
   `idUser2` int NOT NULL,
   `idChar2` int NOT NULL,
   `winner` int NOT NULL,
@@ -143,7 +143,8 @@ INSERT INTO `personnage` (`id`, `nom`) VALUES
 CREATE TABLE `tournoi` (
   `id` int NOT NULL,
   `date` date NOT NULL,
-  `etat` varchar(20) NOT NULL
+  `etat` varchar(20) NOT NULL,
+  `nbParticipants` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
