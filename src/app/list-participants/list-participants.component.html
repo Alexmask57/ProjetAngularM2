@@ -2,10 +2,23 @@
   <h1>Liste des participants</h1>
   <div #divRecherchePersonnage>
     <label>Recherche</label>
-    <input #recherchePersonnage type="text" placeholder="Mario">
+    <input [(ngModel)]="search" type="text" placeholder="Marc" (keyup)="searchOnList()">
   </div>
-  <div *ngIf="loading === true; then displayLoading else displayCharacters"></div>
+  <div class="row">
+      <card-participants *ngFor="let participant of ParticipantsFilter" class="col-md-3" [participant]="participant" (participantDelete)="delete($event)" (participantUpdate)="update($event)"></card-participants>
+  </div>
   <section class="buttons-fab">
+    <button (click)="switchView()" mat-fab class="btn-switch">
+      <em class="material-icons" *ngIf="view === 'card'">list</em>
+      <em class="material-icons" *ngIf="view === 'list'">view_stream</em>
+    </button>
+  </section>
+  <section class="buttons-fab">
+
+    <button (click)="showDialog()" mat-fab class="button-add">
+      <em class="material-icons">add</em>
+    </button>
+
     <button (click)="switchView()" mat-fab class="btn-switch">
       <em class="material-icons" *ngIf="view === 'card'">list</em>
       <em class="material-icons" *ngIf="view === 'list'">view_stream</em>
@@ -32,16 +45,5 @@
       </div>
     </div>
   </div>
-</ng-template>
-
-<ng-template #displayCharacters [ngSwitch]="view">
-  <div *ngSwitchCase="'card'" class="row">
-    <div *ngFor="let participant of Participants" class="col-md-3">
-      <card-participants [participant]="participant"></card-participants>
-    </div>
-  </div>
-  <section *ngSwitchCase="'list'">
-
-  </section>
 </ng-template>
 

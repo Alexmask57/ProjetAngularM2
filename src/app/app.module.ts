@@ -30,6 +30,9 @@ import { ListParticipantsComponent } from './list-participants/list-participants
 import { CardParticipantsComponent } from './list-participants/card-participants/card-participants.component';
 import { DetailTournoiComponent } from './detail-tournoi/detail-tournoi.component';
 import { CombatComponent } from './detail-tournoi/combat/combat.component';
+import { AjoutPopupComponent } from './list-participants/ajout-popup/ajout-popup.component';
+import { FormulaireComponent } from './partage/formulaire/formulaire.component';
+import { EditionComponent } from './list-participants/edition/edition.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { CombatComponent } from './detail-tournoi/combat/combat.component';
     ListParticipantsComponent,
     CardParticipantsComponent,
     DetailTournoiComponent,
-    CombatComponent
+    CombatComponent,
+    AjoutPopupComponent,
+    FormulaireComponent,
+    EditionComponent
   ],
   imports: [
     HttpClientModule,

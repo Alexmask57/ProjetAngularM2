@@ -1,4 +1,14 @@
-<mat-card>
-  <img mat-card-avatar [src]="participant?.photo"/>
+<mat-card class="cardParticipant">
+  <img mat-card-image [src]="participant?.photo"/>
   <mat-card-title>{{participant?.pseudo}}</mat-card-title>
+
+  <mat-card-actions align="end">
+    <button mat-mini-fab aria-label="Editer" color="accent" [routerLink]="['/editParticipant', participant?.id]">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-mini-fab aria-label="Supprimer" color="warn" (click)="delete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+
 </mat-card>
