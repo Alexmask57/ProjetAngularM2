@@ -1,0 +1,45 @@
+<mat-card class="mat-whiteframe-2dp">
+
+  <mat-card-title><span>➕ Ajouter un Participant</span></mat-card-title>
+  <mat-card-content>
+    <form novalidate [formGroup]="form">
+
+      <p [class.errors]="form.get('pseudo')!.invalid && (form.get('pseudo')!.dirty || form.get('pseudo')!.touched)">
+        <mat-form-field class="name">
+          <mat-label>Pseudo</mat-label>
+          <input matInput formControlName="pseudo" name="pseudo" matInput placeholder="Pseudo" required/>
+          <mat-error *ngIf="form.get('pseudo')!.dirty && form.get('pseudo')!.errors?.['required']"><br/>Le pseudo est
+            obligatoire
+          </mat-error>
+          <mat-error *ngIf="form.get('pseudo')!.dirty && form.get('pseudo')!.errors?.['minlength']"><br/>Le pseudo doit
+            avoir au moins 2 caractères
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <input #fileInput type="file" (change)="onFileSelected($event)" name="photo" style="display: none;"
+             accept=".png,.jpg"/>
+      <div *ngIf="participantModel.photo">
+        <img width="100" src="{{participantModel.photo}}" alt="Photo du participant"/> <br>
+        <button mat-flat-button color="warn" (click)="participantModel.photo = null;">
+          <mat-icon>
+            cancel
+          </mat-icon>
+        </button>
+      </div>
+      <div class="file-upload" *ngIf="!participantModel.photo">
+        <button type="button" (click)="fileInput.click()" mat-fab>
+          <mat-icon>
+            image
+          </mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Annuler</button>
+    <button mat-button type="submit" color="primary" (click)="submit(form.value)" [disabled]="!form.valid">Valider
+    </button>
+  </mat-card-actions>
+</mat-card>
