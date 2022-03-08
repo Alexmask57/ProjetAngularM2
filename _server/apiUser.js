@@ -31,7 +31,8 @@ const create = async function (req, res, next) {
   json.photo = json.pseudo + '.' + response.type;
 
   try {
-    return res.status(201).json(await user.create(json));
+    const newId = (await user.create(json)).insertId;
+    return res.status(201).json(await user.getById(newId));
   } catch (err) {
     console.error("ERROR !! : " + err);
     next(err);
