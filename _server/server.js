@@ -37,6 +37,7 @@ app.post(url._charUrl, apiCharacter.create);
 
 //JSON API TOURNAMENT
 app.get(url._tournamentUrl, apiTournament.listAll);
+app.get(url._tournamentUrl + '/open', apiTournament.listAllOpen);
 app.get(url._tournamentUrl + '/:id', apiTournament.getById);
 app.post(url._tournamentUrl, apiTournament.create);
 app.put(url._tournamentUrl + '/:id', apiTournament.update);

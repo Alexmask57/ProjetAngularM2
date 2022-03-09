@@ -1,1 +1,30 @@
-<p>historique-tournois works!</p>
+<div class="container">
+  <h1>Liste des tournois</h1>
+
+  <section class="list">
+    <table mat-table [dataSource]="listTournoi" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let tournoi">{{tournoi.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let tournoi">{{tournoi.date | date: 'shortDate'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nbParticipants">
+        <th mat-header-cell *matHeaderCellDef>Nombre de participants</th>
+        <td mat-cell *matCellDef="let tournoi">{{tournoi.nbParticipants}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="etat">
+        <th mat-header-cell *matHeaderCellDef>Etat</th>
+        <td mat-cell *matCellDef="let tournoi">{{tournoi.etat}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnTournoi"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnTournoi;"></tr>
+    </table>
+  </section>
+</div>

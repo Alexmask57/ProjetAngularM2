@@ -21,8 +21,8 @@ async function getByIdTournoi(idT) {
 }
 
 async function create(combat) {
-  const result = await db.query('INSERT INTO combat (idUser1, idChar1, idUser2, idChar2, winner, niveau, idTournoi, idParent, bracketNo) ' +
-    'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', [combat.user1.pseudo, combat.user1.personnage, combat.user2.pseudo, combat.user2.personnage, combat.winner, combat.niveau, combat.idTournoi, combat.nextGame, combat.bracketNo]);
+  const result = await db.query('INSERT INTO combat (idUser1, idUser2, winner, niveau, idTournoi, idParent, bracketNo) ' +
+    'VALUES (?, ?, ?, ?, ?, ?, ?)', [combat.user1.idParticipant, combat.user2.idParticipant, combat.winner, combat.niveau, combat.idTournoi, combat.nextGame, combat.bracketNo]);
   return result;
 }
 

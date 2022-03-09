@@ -5,6 +5,11 @@ async function getAll() {
   return rows;
 }
 
+async function getAllOpen() {
+  const rows = await db.query('SELECT * FROM tournoi WHERE etat = "en cours"');
+  return rows;
+}
+
 async function getById(id) {
   const row = await db.query('SELECT * FROM tournoi WHERE id = ?', [id]);
   return row;
@@ -30,4 +35,4 @@ async function setTermine(id) {
   return result;
 }
 
-export {getAll, getById, create, update, remove, setTermine}
+export {getAll, getAllOpen, getById, create, update, remove, setTermine}

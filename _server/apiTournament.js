@@ -13,6 +13,14 @@ const listAll = async function (req, res) {
   return res.status(200).json(tournaments);
 }
 
+//get all opened tournaments
+const listAllOpen = async function (req, res) {
+  console.log('Get all opened tournaments');
+
+  const tournaments  = await sqlTournament.getAllOpen();
+  return res.status(200).json(tournaments);
+}
+
 //get tournament by id
 //TODO check if id doesn't exist
 const getById = async function (req, res) {
@@ -195,8 +203,8 @@ function getBracket(idTournoi, participants) {
       niveau:	round,
       winner: "",
       bye:		isBye,
-      user1: {"pseudo": "", "personnage": ""},
-      user2: {"pseudo": "", "personnage": ""}
+      user1: {"idParticipant": ""},
+      user2: {"idParticipant": ""}
     });
     teamMark += 2;
     if (i % 2 != 0) nextInc--;
@@ -267,4 +275,4 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-export {listAll, getById, create, update, remove, winnerMatch}
+export {listAll, getById, create, update, remove, winnerMatch, listAllOpen}

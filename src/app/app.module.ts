@@ -33,6 +33,8 @@ import { CombatComponent } from './detail-tournoi/combat/combat.component';
 import { AjoutPopupComponent } from './list-participants/ajout-popup/ajout-popup.component';
 import { FormulaireComponent } from './partage/formulaire/formulaire.component';
 import { EditionComponent } from './list-participants/edition/edition.component';
+import { AjoutTournoiComponent } from './home/ajout-tournoi/ajout-tournoi.component';
+import { FormulaireTournoiComponent } from './partage/formulaire-tournoi/formulaire-tournoi.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { EditionComponent } from './list-participants/edition/edition.component'
     CombatComponent,
     AjoutPopupComponent,
     FormulaireComponent,
-    EditionComponent
+    EditionComponent,
+    AjoutTournoiComponent,
+    FormulaireTournoiComponent
   ],
   imports: [
     HttpClientModule,

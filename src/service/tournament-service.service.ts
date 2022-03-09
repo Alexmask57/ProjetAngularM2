@@ -16,6 +16,10 @@ export class TournamentServiceService {
     return this.http.get<Tournoi[]>(this.url);
   }
 
+  fetchOpen(): Observable<Tournoi[]> {
+    return this.http.get<Tournoi[]>(this.url + '/open');
+  }
+
   fetchOne(id: string): Observable<TournoiDetail> {
     return this.http.get<TournoiDetail>(this.url + '/' + id);
   }

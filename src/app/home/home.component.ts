@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Character, SsbCharactersService} from "../../service/ssb-characters.service";
 import {TournamentServiceService} from "../../service/tournament-service.service";
+import {Tournoi} from "../../models/Tournoi";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {AjoutTournoiComponent} from "./ajout-tournoi/ajout-tournoi.component";
 
 @Component({
   selector: 'home',
@@ -9,15 +12,40 @@ import {TournamentServiceService} from "../../service/tournament-service.service
 })
 export class HomeComponent implements OnInit {
 
-  list: Character[] = [];
+  private addDialog: MatDialogRef<AjoutTournoiComponent> | any;
+  listOpen: Tournoi[] = [];
+  columnTournoi: string[] = ['id', 'date', 'etat', 'nbParticipants'];
+  dialogStatus = 'inactive';
 
-  constructor(private readonly service:TournamentServiceService) { }
+  constructor(private readonly tournoiService:TournamentServiceService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.service.fetchOne("1").subscribe(l => {
-      //this.list = l || [];
-      console.log(l);
+    this.tournoiService.fetchOpen().subscribe(list => {
+      this.listOpen = list || [];
     });
   }
+
+  showDialog() {
+    this.dialogStatus = 'active';
+    this.addDialog = this.dialog.open(AjoutTournoiComponent, {
+      width: '600px',
+      data: {}
+    });
+
+    this.addDialog.afterClosed().subscribe((tournoi: any) => {
+      this.dialogStatus = 'inactive';
+      if(tournoi) {
+        console.log(tournoi);
+      }
+    });
+  }
+
+  hideDialog() {
+    this.dialogStatus = 'inactive';
+    if (this.addDialog != undefined) {
+      this.addDialog.close();
+    }
+  }
+
 
 }
