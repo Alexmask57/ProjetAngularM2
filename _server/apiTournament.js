@@ -94,6 +94,19 @@ const create = async function (req, res, next) {
   res.send();
 }
 
+//add character to a fight
+const addCharacter = async function (req, res, next) {
+  let idM = req.params['idM'];
+  let json = req.body;
+  console.log("Add characters fight id : " + idM);
+  try {
+    res.json(await sqlMatch.addCharacter(idM, json.idChar1, json.idChar2));
+  } catch (err) {
+    console.error("ERROR !! : " + err);
+    next(err);
+  }
+}
+
 //update a tournament
 //TODO check if id doesn't exist
 const update = async function (req, res, next) {
@@ -133,7 +146,7 @@ const winnerMatch = async function (req, res, next) {
     //si il s'agit du dernier match du tournoi, on indique que le tournoi est terminé
     await sqlMatch.setWinner(idM, winner);
     let match = (await sqlMatch.getById(idM))[0];
-    //console.log(match);
+
     if(match.idParent == null)
       await sqlTournament.setTermine(match.idTournoi);
     else {
@@ -141,15 +154,15 @@ const winnerMatch = async function (req, res, next) {
       let nextMatch = (await sqlMatch.getByBracket(match.idTournoi, match.idParent))[0];
       if(match.winner == match.idUser1) {
         if(nextMatch.idUser1 == 0)
-          await sqlMatch.setNextMatch(nextMatch.id, 1, match.idUser1, match.idChar1);
+          await sqlMatch.setNextMatch(nextMatch.id, 1, match.idUser1);
         else
-          await sqlMatch.setNextMatch(nextMatch.id, 2, match.idUser1, match.idChar1);
+          await sqlMatch.setNextMatch(nextMatch.id, 2, match.idUser1);
       }
       else {
         if(nextMatch.idUser1 == 0)
-          await sqlMatch.setNextMatch(nextMatch.id, 1, match.idUser2, match.idChar2);
+          await sqlMatch.setNextMatch(nextMatch.id, 1, match.idUser2);
         else
-          await sqlMatch.setNextMatch(nextMatch.id, 2, match.idUser2, match.idChar2);
+          await sqlMatch.setNextMatch(nextMatch.id, 2, match.idUser2);
       }
     }
 
@@ -158,6 +171,23 @@ const winnerMatch = async function (req, res, next) {
     console.error("ERROR !! : " + err);
     next(err);
   }
+}
+
+//recuperer le nb de victoires par match et par tournoi
+const getStats = async function(req, res, next) {
+  console.log('get stats');
+  let pseudo = [];
+  let nbMatchs = [];
+  let nbTournois = [];
+
+  let stats = await sqlMatch.getStats();
+  stats.forEach(stat => {
+    pseudo.push(stat.pseudo);
+    nbMatchs.push(stat.nbMatchs);
+    nbTournois.push(stat.nbTournois);
+  });
+
+  res.json({"pseudo": pseudo, "nbMatchs": nbMatchs, "nbTournois": nbTournois});
 }
 
 function getBracket(idTournoi, participants) {
@@ -246,8 +276,6 @@ function getBracket(idTournoi, participants) {
   }
   );
 
-  //console.log(finalBrackets);
-
   return finalBrackets;
 }
 
@@ -275,4 +303,4 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-export {listAll, getById, create, update, remove, winnerMatch, listAllOpen}
+export {listAll, getById, create, update, remove, winnerMatch, listAllOpen, addCharacter, getStats}

@@ -35,6 +35,8 @@ import { FormulaireComponent } from './partage/formulaire/formulaire.component';
 import { EditionComponent } from './list-participants/edition/edition.component';
 import { AjoutTournoiComponent } from './home/ajout-tournoi/ajout-tournoi.component';
 import { FormulaireTournoiComponent } from './partage/formulaire-tournoi/formulaire-tournoi.component';
+import { GraphStatsComponent } from './graph-stats/graph-stats.component';
+import {NgxEchartsModule} from "ngx-echarts";
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { FormulaireTournoiComponent } from './partage/formulaire-tournoi/formula
     FormulaireComponent,
     EditionComponent,
     AjoutTournoiComponent,
-    FormulaireTournoiComponent
+    FormulaireTournoiComponent,
+    GraphStatsComponent
   ],
   imports: [
     HttpClientModule,
@@ -75,7 +78,10 @@ import { FormulaireTournoiComponent } from './partage/formulaire-tournoi/formula
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    NgxEchartsModule.forRoot({
+      echarts: () =>import('echarts')
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

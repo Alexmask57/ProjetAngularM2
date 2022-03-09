@@ -21,8 +21,8 @@ async function getByIdTournoi(idT) {
 }
 
 async function create(combat) {
-  const result = await db.query('INSERT INTO combat (idUser1, idUser2, winner, niveau, idTournoi, idParent, bracketNo) ' +
-    'VALUES (?, ?, ?, ?, ?, ?, ?)', [combat.user1.idParticipant, combat.user2.idParticipant, combat.winner, combat.niveau, combat.idTournoi, combat.nextGame, combat.bracketNo]);
+  const result = await db.query('INSERT INTO combat (idUser1, idUser2, winner, niveau, idTournoi, idParent, bracketNo, idChar1, idChar2) ' +
+    'VALUES (?, ?, ?, ?, ?, ?, ?, 0, 0)', [combat.user1.idParticipant, combat.user2.idParticipant, combat.winner, combat.niveau, combat.idTournoi, combat.nextGame, combat.bracketNo]);
   return result;
 }
 
@@ -47,9 +47,25 @@ async function setWinner(id, winner) {
   return result;
 }
 
-async function setNextMatch(id, position, idUser, idChar) {
-  const result = await db.query('UPDATE combat SET idUser' + position + ' = ?, idChar' + position + ' =? WHERE id = ?', [idUser, idChar, id]);
+async function setNextMatch(id, position, idUser) {
+  const result = await db.query('UPDATE combat SET idUser' + position + ' = ? WHERE id = ?', [idUser, id]);
   return result;
 }
 
-export {getAll, getByIdTournoi, getById, getByBracket, create, update, remove, removeByIdTournoi, setWinner, setNextMatch}
+async function addCharacter(idM, idC1, idC2) {
+  const result = await db.query('UPDATE combat SET idChar1 = ?, idChar2 = ? WHERE id = ?', [idC1, idC2, idM]);
+  return result;
+}
+
+async function getStats() {
+  const rows = await db.query('SELECT user.pseudo, \n' +
+    '\tsum(case when combat.winner = user.id then 1 else 0 end) nbMatchs,\n' +
+    '    sum(case when combat.winner = user.id AND combat.idParent IS NULL then 1 else 0 end) nbTournois\n' +
+    'FROM user\n' +
+    'LEFT JOIN combat\n' +
+    'ON user.id = combat.winner\n' +
+    'GROUP BY user.id');
+  return rows;
+}
+
+export {getAll, getByIdTournoi, getById, getByBracket, create, update, remove, removeByIdTournoi, setWinner, setNextMatch, addCharacter, getStats}

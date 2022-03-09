@@ -6,6 +6,7 @@ import {HistoriqueTournoisComponent} from "./historique-tournois/historique-tour
 import {ListParticipantsComponent} from "./list-participants/list-participants.component";
 import {EditionComponent} from "./list-participants/edition/edition.component";
 import {ParticipantDetailsResolver} from "./resolver/participant-details.resolver";
+import {GraphStatsComponent} from "./graph-stats/graph-stats.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'ListParticipants', component: ListParticipantsComponent},
   {path:'HistoriqueTournois', component: HistoriqueTournoisComponent},
   { path: 'editParticipant/:id', component: EditionComponent, resolve: { participant: ParticipantDetailsResolver } },
+  {path:'Stats', component: GraphStatsComponent},
 ];
 
 @NgModule({

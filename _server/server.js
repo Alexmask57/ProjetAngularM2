@@ -38,12 +38,14 @@ app.post(url._charUrl, apiCharacter.create);
 //JSON API TOURNAMENT
 app.get(url._tournamentUrl, apiTournament.listAll);
 app.get(url._tournamentUrl + '/open', apiTournament.listAllOpen);
+app.get(url._tournamentUrl + '/stats', apiTournament.getStats);
 app.get(url._tournamentUrl + '/:id', apiTournament.getById);
 app.post(url._tournamentUrl, apiTournament.create);
 app.put(url._tournamentUrl + '/:id', apiTournament.update);
 app.delete(url._tournamentUrl + '/:id', apiTournament.remove);
 
 app.put(url._tournamentUrl + '/winner/:idM', apiTournament.winnerMatch);
+app.put(url._tournamentUrl + '/personnages/:idM', apiTournament.addCharacter);
 
 app.listen(app.get('port'), function () {
   console.log('✔ Express server listening on http://localhost:%d/', app.get('port'));

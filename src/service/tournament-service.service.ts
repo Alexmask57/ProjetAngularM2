@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Tournoi, TournoiDetail} from "../models/Tournoi";
+import {Stats} from "../models/Stats";
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,8 @@ export class TournamentServiceService {
     return this.http.get<TournoiDetail>(this.url + '/' + id);
   }
 
-  create(newTournoi: Tournoi): Observable<Tournoi> {
-    return this.http.post<Tournoi>(this.url, newTournoi);
+  create(listeParticipants: any): Observable<Tournoi> {
+    return this.http.post<Tournoi>(this.url, listeParticipants);
   }
 
   update(updateTournoi: Tournoi): Observable<Tournoi> {
@@ -38,5 +39,15 @@ export class TournamentServiceService {
 
   setWinner(idM: string, idWinner: string): Observable<any> {
     return this.http.put(this.url + '/winner/' + idM, {"winner": idWinner});
+  }
+
+  //TODO
+  //TODO!!
+  setCharacters() {
+
+  }
+
+  getStats(): Observable<Stats> {
+    return this.http.get<Stats>(this.url + '/stats');
   }
 }
