@@ -41,7 +41,10 @@ export class FormulaireComponent implements OnInit {
   }
 
   submit(participant: Participant) {
-    participant.photo = this.participantModel.photo;
+    if(this.participantModel.photo == undefined)
+      participant.photo = "";
+    else
+      participant.photo = this.participantModel.photo;
     this.submitEvent$.emit(participant);
   }
 

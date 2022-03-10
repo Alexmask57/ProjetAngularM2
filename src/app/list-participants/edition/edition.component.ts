@@ -30,14 +30,17 @@ export class EditionComponent implements OnInit {
     this.route.data.subscribe(( participant: any) => (this.participant = participant.participant[0]));
   }
 
-  submit(music: any) {
-    this.userService.update(music).subscribe(() => {
+  submit(participant: any) {
+    if(this.participant.photo == undefined)
+      participant.photo = "";
+    console.log(participant);
+    this.userService.update(participant).subscribe(() => {
       this.router.navigate(['/ListParticipants']).then(r => null);
     });
   }
 
   cancel() {
-    this.router.navigate(['/listMusic']).then(r => null);
+    this.router.navigate(['/ListParticipants']).then(r => null);
   }
 
 }
