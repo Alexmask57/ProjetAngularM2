@@ -32,7 +32,7 @@ const create = async function (req, res, next) {
 
   try {
     const newId = (await user.create(json)).insertId;
-    return res.status(201).json(await user.getById(newId));
+    return res.status(201).json((await user.getById(newId))[0]);
   } catch (err) {
     console.error("ERROR !! : " + err);
     next(err);

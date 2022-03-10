@@ -10,9 +10,14 @@ async function getById(id) {
   return row;
 }
 
+async function getByName(name) {
+  const row = await db.query('SELECT * FROM personnage WHERE nom = ?', [name]);
+  return row;
+}
+
 async function create(character) {
   const result = await db.query('INSERT INTO personnage (nom) VALUES (?)', [character.nom]);
   return result;
 }
 
-export {getAll, getById, create}
+export {getAll, getById, getByName, create}

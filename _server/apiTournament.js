@@ -100,7 +100,9 @@ const addCharacter = async function (req, res, next) {
   let json = req.body;
   console.log("Add characters fight id : " + idM);
   try {
-    res.json(await sqlMatch.addCharacter(idM, json.idChar1, json.idChar2));
+    let idChar1 = (await sqlCharacter.getByName(json.char1))[0].id;
+    let idChar2 = (await sqlCharacter.getByName(json.char2))[0].id;
+    res.json(await sqlMatch.addCharacter(idM, idChar1, idChar2));
   } catch (err) {
     console.error("ERROR !! : " + err);
     next(err);
