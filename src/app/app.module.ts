@@ -40,6 +40,7 @@ import {NgxEchartsModule} from "ngx-echarts";
 import {MatSelectModule} from "@angular/material/select";
 import { DetailCombatComponent } from './detail-tournoi/combat/detail-combat/detail-combat.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DialogComponent } from './partage/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { LoadingComponent } from './loading/loading.component';
     FormulaireTournoiComponent,
     GraphStatsComponent,
     DetailCombatComponent,
-    LoadingComponent
+    LoadingComponent,
+    DialogComponent
   ],
     imports: [
         HttpClientModule,

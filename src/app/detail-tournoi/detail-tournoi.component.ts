@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {TournamentServiceService} from "../../service/tournament-service.service";
 import {TournoiDetail} from "../../models/Tournoi";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Match} from "../../models/Match";
 import {AjoutPopupComponent} from "../list-participants/ajout-popup/ajout-popup.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DetailCombatComponent} from "./combat/detail-combat/detail-combat.component";
+import {DialogComponent} from "../partage/dialog/dialog.component";
 
 @Component({
   selector: 'detail-tournoi',
@@ -17,9 +18,10 @@ export class DetailTournoiComponent implements OnInit {
   loading:boolean = true;
   tournoi: TournoiDetail | undefined;
   private detailsMatchDialog: MatDialogRef<DetailCombatComponent> | any;
+  private deleteDialog: MatDialogRef<DialogComponent> | any;
   dialogStatus = 'inactive';
 
-  constructor(private readonly service:TournamentServiceService, private readonly route: ActivatedRoute, public dialog: MatDialog) {
+  constructor(private readonly service:TournamentServiceService, private readonly route: ActivatedRoute, public dialog: MatDialog, private readonly router: Router) {
     this.loading = true;
   }
 
@@ -58,6 +60,36 @@ export class DetailTournoiComponent implements OnInit {
   update(match: Match) {
     if (match?.winner)
       this.service.setWinner(match?.idTournoi, match?.winner).subscribe(res => { this.hideDialog(); });
+  }
+
+  delete(){
+    this.service.delete(this.tournoi?.id as string).subscribe(res => {
+      this.hideDeleteDialog();
+      this.router.navigate(['/Home']).then(r => null);
+    });
+  }
+
+  showDeleteDialog() {
+    this.dialogStatus = 'active';
+    this.deleteDialog = this.dialog.open(DialogComponent, {
+        width: '600px',
+        data: "Souhaitez-vous vraiment supprimer ce tournoi ?",
+      }
+    );
+
+    this.deleteDialog.afterClosed().subscribe((res: any) => {
+      this.dialogStatus = 'inactive';
+      if (res) {
+        this.delete();
+      }
+    });
+  }
+
+  hideDeleteDialog() {
+    this.dialogStatus = 'inactive';
+    if (this.deleteDialog != undefined) {
+      this.deleteDialog.close();
+    }
   }
 
 }

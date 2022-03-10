@@ -5,9 +5,15 @@
 </ng-template>
 
 <ng-template #displayTree>
+  <div class="content"></div>
   <div  class="tf-tree">
-    <ul>
+    <ul class="arbre">
       <combat *ngFor="let combat of tournoi?.combats" [combat]="combat" (showDialog)="showDialog($event)"></combat>
     </ul>
   </div>
+  <section class="buttons-fab">
+    <button mat-fab (click)="showDeleteDialog()" class="btn-delete">
+      <em class="material-icons">delete</em>
+    </button>
+  </section>
 </ng-template>
