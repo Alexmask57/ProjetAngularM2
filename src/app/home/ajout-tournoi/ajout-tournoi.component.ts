@@ -25,7 +25,7 @@ export class AjoutTournoiComponent implements OnInit {
   }
 
   onCreate(participants: Participant[]) {
-    this.closeDialog({...participants, mode: 'create'});
+    this.closeDialog(participants);
   }
 
 }

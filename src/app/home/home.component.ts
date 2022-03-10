@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.addDialog.afterClosed().subscribe((participants: any) => {
+      console.log(participants);
       this.dialogStatus = 'inactive';
       if(participants) {
         this.add(participants)
