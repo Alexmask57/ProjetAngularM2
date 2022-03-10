@@ -42,6 +42,9 @@ import { DetailCombatComponent } from './detail-tournoi/combat/detail-combat/det
 import { LoadingComponent } from './loading/loading.component';
 import { DialogComponent } from './partage/dialog/dialog.component';
 import { RefreshComponent } from './partage/refresh/refresh.component';
+import { MarioComponent } from './loading/mario/mario.component';
+import { PacmanComponent } from './loading/pacman/pacman.component';
+import { MarioFixComponent } from './partage/mario-fix/mario-fix.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import { RefreshComponent } from './partage/refresh/refresh.component';
     DetailCombatComponent,
     LoadingComponent,
     DialogComponent,
-    RefreshComponent
+    RefreshComponent,
+    MarioComponent,
+    PacmanComponent,
+    MarioFixComponent
   ],
     imports: [
         HttpClientModule,

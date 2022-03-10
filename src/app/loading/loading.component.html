@@ -1,17 +1,9 @@
-<div class="loadingPacman">
-  <div class="loadingio-spinner-bean-eater-pzaqmb9bvy">
-    <div class="ldio-9ed3khaa6gb">
-      <div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-  </div>
-</div>
+<div *ngIf="this.res == 1; then mario else pacman"></div>
 
+<ng-template #mario>
+  <mario></mario>
+</ng-template>
+
+<ng-template #pacman>
+  <pacman></pacman>
+</ng-template>

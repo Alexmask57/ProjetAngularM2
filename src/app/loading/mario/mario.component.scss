@@ -1,0 +1,411 @@
+$red: #ED1B24;
+$blue: #0001F7;
+$yellow: #FFC20F;
+$brown: #452300;
+$dark: #0A0A0A;
+
+$size: 5px;
+$size-minus: -5px;
+
+
+$mario-stand: $size 0 $red,
+$size*2 0 $red,
+$size*3 0 $red,
+$size*4 0 $red,
+
+$size-minus $size $red,
+0 $size $red,
+$size $size $red,
+$size*2 $size $red,
+$size*3 $size $red,
+$size*4 $size $red,
+$size*5 $size $red,
+$size*6 $size $red,
+$size*7 $size $red,
+
+$size-minus $size*2 $brown,
+0 $size*2 $brown,
+$size $size*2 $brown,
+$size*2 $size*2 $yellow,
+$size*3 $size*2 $yellow,
+$size*4 $size*2 $dark,
+$size*5 $size*2 $yellow,
+$size*6 $size $red,
+$size*7 $size $red,
+
+$size-minus*2 $size*3 $brown,
+$size-minus $size*3 $yellow,
+0 $size*3 $brown,
+$size $size*3 $yellow,
+$size*2 $size*3 $yellow,
+$size*3 $size*3 $yellow,
+$size*4 $size*3 $dark,
+$size*5 $size*3 $yellow,
+$size*6 $size*3 $yellow,
+$size*7 $size*3 $yellow,
+
+$size-minus*2 $size*4 $brown,
+$size-minus $size*4 $yellow,
+0 $size*4 $brown,
+$size $size*4 $brown,
+$size*2 $size*4 $yellow,
+$size*3 $size*4 $yellow,
+$size*4 $size*4 $yellow,
+$size*5 $size*4 $dark,
+$size*6 $size*4 $yellow,
+$size*7 $size*4 $yellow,
+$size*8 $size*4 $yellow,
+
+$size-minus $size*5 $brown,
+0 $size*5 $yellow,
+$size $size*5 $yellow,
+$size*2 $size*5 $yellow,
+$size*3 $size*5 $yellow,
+$size*4 $size*5 $dark,
+$size*5 $size*5 $dark,
+$size*6 $size*5 $dark,
+$size*7 $size*5 $dark,
+
+0 $size*6 $yellow,
+$size $size*6 $yellow,
+$size*2 $size*6 $yellow,
+$size*3 $size*6 $yellow,
+$size*4 $size*6 $yellow,
+$size*5 $size*6 $yellow,
+
+$size-minus $size*7 $red,
+0 $size*7 $red,
+$size $size*7 $blue,
+$size*2 $size*7 $red,
+$size*3 $size*7 $red,
+$size*4 $size*7 $blue,
+$size*5 $size*7 $red,
+$size*6 $size*7 $red,
+
+$size-minus*2 $size*8 $red,
+$size-minus $size*8 $red,
+0 $size*8 $red,
+$size $size*8 $blue,
+$size*2 $size*8 $red,
+$size*3 $size*8 $red,
+$size*4 $size*8 $blue,
+$size*5 $size*8 $red,
+$size*6 $size*8 $red,
+$size*7 $size*8 $red,
+
+$size-minus*3 $size*9 $red,
+$size-minus*2 $size*9 $red,
+$size-minus $size*9 $red,
+0 $size*9 $red,
+$size $size*9 $blue,
+$size*2 $size*9 $blue,
+$size*3 $size*9 $blue,
+$size*4 $size*9 $blue,
+$size*5 $size*9 $red,
+$size*6 $size*9 $red,
+$size*7 $size*9 $red,
+$size*8 $size*9 $red,
+
+$size-minus*3 $size*10 $yellow,
+$size-minus*2 $size*10 $yellow,
+$size-minus $size*10 $red,
+0 $size*10 $blue,
+$size $size*10 $yellow,
+$size*2 $size*10 $blue,
+$size*3 $size*10 $blue,
+$size*4 $size*10 $yellow,
+$size*5 $size*10 $blue,
+$size*6 $size*10 $red,
+$size*7 $size*10 $yellow,
+$size*8 $size*10 $yellow,
+
+$size-minus*3 $size*11 $yellow,
+$size-minus*2 $size*11 $yellow,
+$size-minus $size*11 $yellow,
+0 $size*11 $blue,
+$size $size*11 $blue,
+$size*2 $size*11 $blue,
+$size*3 $size*11 $blue,
+$size*4 $size*11 $blue,
+$size*5 $size*11 $blue,
+$size*6 $size*11 $yellow,
+$size*7 $size*11 $yellow,
+$size*8 $size*11 $yellow,
+
+$size-minus*3 $size*12 $yellow,
+$size-minus*2 $size*12 $yellow,
+$size-minus $size*12 $blue,
+0 $size*12 $blue,
+$size $size*12 $blue,
+$size*2 $size*12 $blue,
+$size*3 $size*12 $blue,
+$size*4 $size*12 $blue,
+$size*5 $size*12 $blue,
+$size*6 $size*12 $blue,
+$size*7 $size*12 $yellow,
+$size*8 $size*12 $yellow,
+
+
+$size-minus $size*13 $blue,
+0 $size*13 $blue,
+$size $size*13 $blue,
+$size*4 $size*13 $blue,
+$size*5 $size*13 $blue,
+$size*6 $size*13 $blue,
+
+$size-minus*2 $size*14 $brown,
+$size-minus $size*14 $brown,
+0 $size*14 $brown,
+$size*5 $size*14 $brown,
+$size*6 $size*14 $brown,
+$size*7 $size*14 $brown,
+
+$size-minus*2 $size*14 $brown,
+$size-minus $size*14 $brown,
+0 $size*14 $brown,
+$size*5 $size*14 $brown,
+$size*6 $size*14 $brown,
+$size*7 $size*14 $brown,
+
+$size-minus*3 $size*15 $brown,
+$size-minus*2 $size*15 $brown,
+$size-minus $size*15 $brown,
+0 $size*15 $brown,
+$size*5 $size*15 $brown,
+$size*6 $size*15 $brown,
+$size*7 $size*15 $brown,
+$size*8 $size*15 $brown;
+
+$mario-jump: $size*7 $size-minus $yellow,
+$size*8 $size-minus $yellow,
+$size*9 $size-minus $yellow,
+
+$size 0 $red,
+$size*2 0 $red,
+$size*3 0 $red,
+$size*4 0 $red,
+$size*7 0 $yellow,
+$size*8 0 $yellow,
+$size*9 0 $yellow,
+
+$size-minus $size $red,
+0 $size $red,
+$size $size $red,
+$size*2 $size $red,
+$size*3 $size $red,
+$size*4 $size $red,
+$size*5 $size $red,
+$size*6 $size $red,
+$size*7 $size $red,
+$size*8 $size $yellow,
+$size*9 $size $yellow,
+
+$size-minus $size*2 $brown,
+0 $size*2 $brown,
+$size $size*2 $brown,
+$size*2 $size*2 $yellow,
+$size*3 $size*2 $yellow,
+$size*4 $size*2 $dark,
+$size*5 $size*2 $yellow,
+$size*7 $size*2 $red,
+$size*8 $size*2 $red,
+$size*9 $size*2 $red,
+
+$size-minus*2 $size*3 $brown,
+$size-minus $size*3 $yellow,
+0 $size*3 $brown,
+$size $size*3 $yellow,
+$size*2 $size*3 $yellow,
+$size*3 $size*3 $yellow,
+$size*4 $size*3 $dark,
+$size*5 $size*3 $yellow,
+$size*6 $size*3 $yellow,
+$size*7 $size*3 $yellow,
+$size*8 $size*3 $red,
+$size*9 $size*3 $red,
+
+$size-minus*2 $size*4 $brown,
+$size-minus $size*4 $yellow,
+0 $size*4 $brown,
+$size $size*4 $brown,
+$size*2 $size*4 $yellow,
+$size*3 $size*4 $yellow,
+$size*4 $size*4 $yellow,
+$size*5 $size*4 $dark,
+$size*6 $size*4 $yellow,
+$size*7 $size*4 $yellow,
+$size*8 $size*4 $yellow,
+$size*9 $size*4 $red,
+
+$size-minus $size*5 $brown,
+0 $size*5 $yellow,
+$size $size*5 $yellow,
+$size*2 $size*5 $yellow,
+$size*3 $size*5 $yellow,
+$size*4 $size*5 $dark,
+$size*5 $size*5 $dark,
+$size*6 $size*5 $dark,
+$size*7 $size*5 $dark,
+$size*8 $size*5 $red,
+
+0 $size*6 $yellow,
+$size $size*6 $yellow,
+$size*2 $size*6 $yellow,
+$size*3 $size*6 $yellow,
+$size*4 $size*6 $yellow,
+$size*5 $size*6 $yellow,
+$size*6 $size*6 $red,
+$size*7 $size*6 $red,
+
+$size-minus*3 $size*7 $red,
+$size-minus*2 $size*7 $red,
+$size-minus $size*7 $red,
+0 $size*7 $red,
+$size $size*7 $blue,
+$size*2 $size*7 $red,
+$size*3 $size*7 $red,
+$size*4 $size*7 $red,
+$size*5 $size*7 $blue,
+$size*6 $size*7 $red,
+
+$size-minus*4 $size*8 $red,
+$size-minus*3 $size*8 $red,
+$size-minus*2 $size*8 $red,
+$size-minus $size*8 $red,
+0 $size*8 $red,
+$size $size*8 $red,
+$size*2 $size*8 $blue,
+$size*3 $size*8 $red,
+$size*4 $size*8 $red,
+$size*5 $size*8 $red,
+$size*6 $size*8 $blue,
+$size*9 $size*8 $brown,
+
+$size-minus*5 $size*9 $yellow,
+$size-minus*4 $size*9 $yellow,
+$size-minus*3 $size*9 $red,
+$size-minus*2 $size*9 $red,
+$size-minus $size*9 $red,
+0 $size*9 $red,
+$size $size*9 $red,
+$size*2 $size*9 $blue,
+$size*3 $size*9 $blue,
+$size*4 $size*9 $blue,
+$size*5 $size*9 $blue,
+$size*6 $size*9 $blue,
+$size*9 $size*9 $brown,
+
+$size-minus*5 $size*10 $yellow,
+$size-minus*4 $size*10 $yellow,
+$size-minus*3 $size*10 $yellow,
+0 $size*10 $blue,
+$size $size*10 $red,
+$size*2 $size*10 $blue,
+$size*3 $size*10 $blue,
+$size*4 $size*10 $yellow,
+$size*5 $size*10 $blue,
+$size*6 $size*10 $yellow,
+$size*7 $size*10 $blue,
+$size*8 $size*10 $brown,
+$size*9 $size*10 $brown,
+
+$size-minus*4 $size*11 $yellow,
+$size-minus*2 $size*11 $brown,
+0 $size*11 $blue,
+$size $size*11 $blue,
+$size*2 $size*11 $blue,
+$size*3 $size*11 $blue,
+$size*4 $size*11 $blue,
+$size*5 $size*11 $blue,
+$size*6 $size*11 $blue,
+$size*7 $size*11 $blue,
+$size*8 $size*11 $brown,
+$size*9 $size*11 $brown,
+
+$size-minus*3 $size*12 $brown,
+$size-minus*2 $size*12 $brown,
+$size-minus $size*12 $brown,
+0 $size*12 $blue,
+$size $size*12 $blue,
+$size*2 $size*12 $blue,
+$size*3 $size*12 $blue,
+$size*4 $size*12 $blue,
+$size*5 $size*12 $blue,
+$size*6 $size*12 $blue,
+$size*7 $size*12 $blue,
+$size*8 $size*12 $brown,
+$size*9 $size*12 $brown,
+
+
+$size-minus*4 $size*13 $brown,
+$size-minus*3 $size*13 $brown,
+$size-minus*2 $size*13 $brown,
+$size-minus $size*13 $blue,
+0 $size*13 $blue,
+$size $size*13 $blue,
+$size*2 $size*13 $blue,
+$size*3 $size*13 $blue,
+$size*4 $size*13 $blue,
+
+$size-minus*4 $size*14 $brown,
+$size-minus $size*14 $blue,
+0 $size*14 $blue,
+$size $size*14 $blue,
+$size*2 $size*14 $blue;
+
+html {
+  height: 500px;
+}
+.mario {
+  margin: 200px auto 0;
+
+  background: $red;
+
+  height: $size;
+  width: $size;
+
+  box-shadow: $mario-stand;
+  animation: mario_state 1.5s step-end infinite,
+  jump 0.5s cubic-bezier(.45,.05,.56,1.24) infinite;
+}
+
+.mario-jump {
+  margin: 200px auto 0;
+
+  background: $red;
+
+  height: $size;
+  width: $size;
+
+  box-shadow: $mario-jump;
+
+}
+
+@keyframes mario_state {
+  0% {
+    box-shadow: $mario-stand;
+  }
+  20% {
+    box-shadow: $mario-jump;
+  }
+
+  70% {
+    box-shadow: $mario-stand;
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0px)
+  }
+
+  20% {
+    transform: translateY(0px)
+  }
+  50% {
+    transform: translateY(-200px)
+  }
+  80% {
+    transform: translateY(0px)
+  }
+}
