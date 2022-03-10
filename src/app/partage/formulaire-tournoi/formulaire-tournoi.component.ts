@@ -42,11 +42,13 @@ export class FormulaireTournoiComponent implements OnInit {
   }
 
   submit(listeParticipants: string[]) {
-    let participants: Participant[] = [];
-    listeParticipants.forEach(value => {
-      // @ts-ignore
-      participants.push(this.Participants.find(x => x.pseudo == value));
-    });
-    this.submitEvent$.emit(listeParticipants);
+    if (listeParticipants){
+      let participants: Participant[] = [];
+      listeParticipants.forEach(value => {
+        // @ts-ignore
+        participants.push(this.Participants.find(x => x.pseudo == value));
+      });
+      this.submitEvent$.emit(participants);
+    }
   }
 }
