@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Character, SsbCharactersService} from "../../service/ssb-characters.service";
+import {SsbCharactersService} from "../../service/ssb-characters.service";
 import {Participant} from "../../models/Participant";
 import {UserServiceService} from "../../service/user-service.service";
 import {AjoutPopupComponent} from "./ajout-popup/ajout-popup.component";
@@ -29,15 +29,6 @@ export class ListParticipantsComponent implements OnInit {
       this.Participants = list || [];
       this.ParticipantsFilter = this.Participants;
     });
-
-    //INIT PURPOSE ONLY
-    /*this.SsbCharactersService.fetch().subscribe(Characters => {
-      console.log(Characters);
-      Characters.map(chr => {
-        this.userService.addCharacter(chr.name).subscribe();
-        console.log(chr.name);
-      });
-    });*/
   }
 
   add(participant: Participant) {

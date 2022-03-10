@@ -37,6 +37,7 @@ import { AjoutTournoiComponent } from './home/ajout-tournoi/ajout-tournoi.compon
 import { FormulaireTournoiComponent } from './partage/formulaire-tournoi/formulaire-tournoi.component';
 import { GraphStatsComponent } from './graph-stats/graph-stats.component';
 import {NgxEchartsModule} from "ngx-echarts";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -58,31 +59,32 @@ import {NgxEchartsModule} from "ngx-echarts";
     FormulaireTournoiComponent,
     GraphStatsComponent
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatChipsModule,
-    MatTableModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatRadioModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule,
-    FormsModule,
-    NgxEchartsModule.forRoot({
-      echarts: () =>import('echarts')
-    })
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatChipsModule,
+        MatTableModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatNativeDateModule,
+        FormsModule,
+        NgxEchartsModule.forRoot({
+            echarts: () => import('echarts')
+        }),
+        MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

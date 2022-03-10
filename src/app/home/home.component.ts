@@ -4,6 +4,7 @@ import {TournamentServiceService} from "../../service/tournament-service.service
 import {Tournoi} from "../../models/Tournoi";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AjoutTournoiComponent} from "./ajout-tournoi/ajout-tournoi.component";
+import {Participant} from "../../models/Participant";
 
 @Component({
   selector: 'home',
@@ -25,6 +26,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  add(participants: Participant[]) {
+    this.tournoiService.create(participants).subscribe(tournoi => {
+      this.listOpen.push(tournoi);
+      this.hideDialog();
+    });
+  }
+
   showDialog() {
     this.dialogStatus = 'active';
     this.addDialog = this.dialog.open(AjoutTournoiComponent, {
@@ -32,10 +40,10 @@ export class HomeComponent implements OnInit {
       data: {}
     });
 
-    this.addDialog.afterClosed().subscribe((tournoi: any) => {
+    this.addDialog.afterClosed().subscribe((participants: any) => {
       this.dialogStatus = 'inactive';
-      if(tournoi) {
-        console.log(tournoi);
+      if(participants) {
+        this.add(participants)
       }
     });
   }
