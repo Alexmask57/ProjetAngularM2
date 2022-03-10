@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
   add(participants: Participant[]) {
     this.tournoiService.create(participants).subscribe(tournoi => {
       this.listOpen.push(tournoi);
+      console.log(tournoi);
       this.hideAddDialog();
     });
   }

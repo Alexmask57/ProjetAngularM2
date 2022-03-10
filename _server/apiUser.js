@@ -24,11 +24,14 @@ const create = async function (req, res, next) {
   var json = req.body;
   console.log('Add a user');
 
-  var response = getImgInfo(json.photo);
+  if(json.photo == '')
+    json.photo = "default.png";
+  else {
+    var response = getImgInfo(json.photo);
 
-
-  base64_decode(json.pseudo, response.data, response.type);
-  json.photo = json.pseudo + '.' + response.type;
+    base64_decode(json.pseudo, response.data, response.type);
+    json.photo = json.pseudo + '.' + response.type;
+  }
 
   try {
     const newId = (await user.create(json)).insertId;
@@ -48,10 +51,16 @@ const update = async function (req, res, next) {
   var json = req.body;
   console.log('Update user id : ' + id);
 
-  var response = getImgInfo(json.photo);
+  console.log(json);
 
-  base64_decode(json.pseudo, response.data, response.type);
-  json.photo = json.pseudo + '.' + response.type;
+  if(json.photo == '')
+    json.photo = "default.png";
+  else {
+    var response = getImgInfo(json.photo);
+
+    base64_decode(json.pseudo, response.data, response.type);
+    json.photo = json.pseudo + '.' + response.type;
+  }
 
   try {
     res.json(await user.update(id, json));
