@@ -4,7 +4,7 @@
   </section>
 
   <div class="startTourmanent">
-    <button (click)="showDialog()" class="btn btn-smash">Démarrer un nouveau tournoi !</button>
+    <button (click)="showAddDialog()" class="btn btn-smash">Démarrer un nouveau tournoi !</button>
   </div>
 
   <section *ngIf="listOpen.length > 0" class="table">
@@ -31,7 +31,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="columnTournoi"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnTournoi;"></tr>
+      <tr mat-row  *matRowDef="let row; columns: columnTournoi;" (click)="displayDetailsTournoi(row)"></tr>
     </table>
   </section>
 
