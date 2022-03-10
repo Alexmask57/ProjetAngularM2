@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Tournoi, TournoiDetail} from "../models/Tournoi";
 import {Stats} from "../models/Stats";
+import {Participant} from "../models/Participant";
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +41,15 @@ export class TournamentServiceService {
   /**
    * Permet de créer un tournoi
    * Crée la structure des matchs avec la liste des participants associés
-   * @param listeParticipants liste d'id des participants
+   * @param listeParticipants liste des participants
    */
-  create(listeParticipants: any): Observable<Tournoi> {
-    return this.http.post<Tournoi>(this.url, listeParticipants);
+  create(listeParticipants: Participant[]): Observable<Tournoi> {
+    let structParticipants: any = [];
+    listeParticipants.forEach(p => {
+      structParticipants.push({"idParticipant": p.id});
+    });
+
+    return this.http.post<Tournoi>(this.url, {"participants": structParticipants});
   }
 
   /**

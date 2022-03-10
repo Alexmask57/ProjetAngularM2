@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Character} from "../../../service/ssb-characters.service";
+import {Character} from "../../../models/Character";
+
 
 @Component({
   selector: 'card-personnage',

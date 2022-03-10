@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Character, SsbCharactersService} from "../../service/ssb-characters.service";
+import {SsbCharactersService} from "../../service/ssb-characters.service";
+import {Character} from "../../models/Character";
+
 
 @Component({
   selector: 'list-personnages',

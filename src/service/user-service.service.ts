@@ -53,9 +53,4 @@ export class UserServiceService {
     return this.http.delete(this.url + '/' + id);
   }
 
-  //INIT PURPOSE ONLY
-  /*addCharacter(name: string | undefined): Observable<any> {
-    return this.http.post<any>("http://localhost:3000/api/personnage", {"nom": name});
-  }*/
-
 }

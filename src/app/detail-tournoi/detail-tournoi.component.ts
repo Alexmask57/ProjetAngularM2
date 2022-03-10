@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Character} from "../../service/ssb-characters.service";
 import {TournamentServiceService} from "../../service/tournament-service.service";
 import {TournoiDetail} from "../../models/Tournoi";
 

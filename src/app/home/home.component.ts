@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Character, SsbCharactersService} from "../../service/ssb-characters.service";
+import {SsbCharactersService} from "../../service/ssb-characters.service";
 import {TournamentServiceService} from "../../service/tournament-service.service";
 import {Tournoi} from "../../models/Tournoi";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
