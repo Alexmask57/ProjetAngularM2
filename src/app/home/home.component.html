@@ -9,7 +9,7 @@
 
   <section *ngIf="listOpen.length > 0" class="table">
     <h2>Il y a actuellement {{listOpen.length}} tournois en cours :</h2>
-    <table mat-table [dataSource]="listOpen" class="mat-elevation-z8">
+    <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>No.</th>
         <td mat-cell *matCellDef="let tournoi">{{tournoi.id}}</td>

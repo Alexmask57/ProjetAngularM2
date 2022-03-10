@@ -38,6 +38,7 @@ import { FormulaireTournoiComponent } from './partage/formulaire-tournoi/formula
 import { GraphStatsComponent } from './graph-stats/graph-stats.component';
 import {NgxEchartsModule} from "ngx-echarts";
 import {MatSelectModule} from "@angular/material/select";
+import { DetailCombatComponent } from './detail-tournoi/combat/detail-combat/detail-combat.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {MatSelectModule} from "@angular/material/select";
     EditionComponent,
     AjoutTournoiComponent,
     FormulaireTournoiComponent,
-    GraphStatsComponent
+    GraphStatsComponent,
+    DetailCombatComponent
   ],
     imports: [
         HttpClientModule,

@@ -1,0 +1,51 @@
+.tf-nc {
+  border: none;
+  width: 20vw;
+}
+mat-card {
+  padding: 0;
+}
+
+mat-card-content {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  height: 10vw;
+}
+
+.participant {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2vw;
+  font-size: 1vw;
+}
+
+.participant span {
+
+}
+
+.participant img {
+  border-radius: 10%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.imageVersus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw;
+}
+
+.imageVersus img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.blockInterrogation {
+  height: auto!important;
+}

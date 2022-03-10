@@ -1,12 +1,40 @@
 
 <li>
-  <span class="tf-nc">{{combat?.bracketNo}}</span>
-  <ul>
+  <span class="tf-nc">
+    <mat-card class="cardParticipant">
+      <mat-card-content>
+        <div class="participant">
+          <div *ngIf="combat?.participant1?.id; then participant1 else participantVide"></div>
+        </div>
+        <div class="imageVersus">
+          <img src="assets/versus.png"/>
+        </div>
+        <div class="participant">
+          <div *ngIf="combat?.participant2?.id; then participant2 else participantVide"></div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </span>
+  <ul *ngIf="combat?.children?.length != 0">
     <li *ngFor="let c of combat?.children">
-      <app-combat [combat]="c"></app-combat>
+      <combat [combat]="c"></combat>
     </li>
   </ul>
 </li>
 
+<ng-template #participant1>
+  <img [src]="combat?.participant1?.photo"/>
+  <span>{{combat?.participant1?.pseudo}}</span>
+</ng-template>
+
+<ng-template #participant2>
+  <img [src]="combat?.participant2?.photo"/>
+  <span>{{combat?.participant2?.pseudo}}</span>
+</ng-template>
+
+<ng-template #participantVide>
+  <img class="blockInterrogation" src="assets/blockInterrogation.jpg"/>
+  <span>En attente</span>
+</ng-template>
 
 

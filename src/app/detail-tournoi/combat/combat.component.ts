@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Match} from "../../../models/Match";
 
 @Component({
-  selector: 'app-combat',
+  selector: 'combat',
   templateUrl: './combat.component.html',
   styleUrls: ['./combat.component.scss']
 })
@@ -13,6 +13,7 @@ export class CombatComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.combat);
   }
 
 }

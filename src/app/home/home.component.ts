@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AjoutTournoiComponent} from "./ajout-tournoi/ajout-tournoi.component";
 import {Participant} from "../../models/Participant";
 import {Router} from "@angular/router";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'home',
@@ -25,6 +26,8 @@ export class HomeComponent implements OnInit {
    */
   listOpen: Tournoi[] = [];
 
+  dataSource = new MatTableDataSource<Tournoi>();
+
   /**
    * Colonnes du tableau d'affichage des tournois
    */
@@ -40,6 +43,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.tournoiService.fetchOpen().subscribe(list => {
       this.listOpen = list || [];
+      this.dataSource.data = this.listOpen;
     });
   }
 
@@ -50,6 +54,7 @@ export class HomeComponent implements OnInit {
   add(participants: Participant[]) {
     this.tournoiService.create(participants).subscribe(tournoi => {
       this.listOpen.push(tournoi);
+      this.refresh();
       this.hideAddDialog();
     });
   }
@@ -83,8 +88,16 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /**
+   * Affiche le détail d'un tournoi
+   * @param tournoi Tournoi à afficher
+   */
   displayDetailsTournoi(tournoi: Tournoi){
     this.router.navigate(['/detailsTournoi', tournoi?.id]).then(r => null);
+  }
+
+  refresh() {
+    this.dataSource.data = this.listOpen;
   }
 
 }
