@@ -15,10 +15,16 @@ import {AjoutPopupComponent} from "../../../list-participants/ajout-popup/ajout-
 export class DetailCombatComponent implements OnInit {
 
   public Personnages: Character[] | undefined;
+  public selectedPersonnage1: string = "";
+  public selectedPersonnage2: string = "";
   form: FormGroup;
 
   constructor(private readonly SsbCharactersService: SsbCharactersService, @Inject(MAT_DIALOG_DATA) public match: Match, public dialogRef: MatDialogRef<DetailCombatComponent>) {
     this.form = DetailCombatComponent.buildForm();
+    if (this.match.personnage1?.nom)
+      this.selectedPersonnage1 = this.match.personnage1.nom;
+    if (this.match.personnage2?.nom)
+      this.selectedPersonnage2 = this.match.personnage2.nom;
   }
 
   ngOnInit(): void {
@@ -39,8 +45,8 @@ export class DetailCombatComponent implements OnInit {
   submit(match: any) {
     if (match){
       this.match.winner = match.idWinner;
-      this.match.personnage1 = {id: "", nom: match.personnage1};
-      this.match.personnage2 = {id: "", nom: match.personnage2};
+      this.match.personnage1 = {id: "", nom: match.namePersonnage1};
+      this.match.personnage2 = {id: "", nom: match.namePersonnage2};
       this.closeDialog(this.match);
     }
   }

@@ -23,7 +23,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="fill">
             <mat-label>Personnage de {{match?.participant1?.pseudo}}</mat-label>
-            <mat-select formControlName="namePersonnage1" name="namePersonnage1" value="{{match?.personnage1?.nom}}">
+            <mat-select formControlName="namePersonnage1" name="namePersonnage1" [(ngModel)]="selectedPersonnage1">
               <mat-option *ngFor="let personnage of Personnages" [value]="personnage.name">
                 <img src="{{ personnage?.images?.icon }}"/>
                 {{personnage?.name}}
@@ -35,7 +35,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="fill">
             <mat-label>Personnage de {{match?.participant2?.pseudo}}</mat-label>
-            <mat-select formControlName="namePersonnage2" name="namePersonnage2" value="{{match?.personnage2?.nom}}">
+            <mat-select formControlName="namePersonnage2" name="namePersonnage2" [(ngModel)]="selectedPersonnage2">
               <mat-option *ngFor="let personnage of Personnages" [value]="personnage.name">
                 <img src="{{ personnage?.images?.icon }}"/>
                 {{personnage?.name}}

@@ -41,6 +41,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { DetailCombatComponent } from './detail-tournoi/combat/detail-combat/detail-combat.component';
 import { LoadingComponent } from './loading/loading.component';
 import { DialogComponent } from './partage/dialog/dialog.component';
+import { RefreshComponent } from './partage/refresh/refresh.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { DialogComponent } from './partage/dialog/dialog.component';
     GraphStatsComponent,
     DetailCombatComponent,
     LoadingComponent,
-    DialogComponent
+    DialogComponent,
+    RefreshComponent
   ],
     imports: [
         HttpClientModule,
