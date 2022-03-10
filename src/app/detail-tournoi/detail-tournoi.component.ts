@@ -44,6 +44,7 @@ export class DetailTournoiComponent implements OnInit {
 
     this.detailsMatchDialog.afterClosed().subscribe((match: any) => {
       this.dialogStatus = 'inactive';
+      console.log(match);
       if (match) {
         this.update(match);
       }
@@ -59,7 +60,11 @@ export class DetailTournoiComponent implements OnInit {
 
   update(match: Match) {
     if (match?.winner)
-      this.service.setWinner(match?.idTournoi, match?.winner).subscribe(res => { this.hideDialog(); });
+      this.service.setWinner(match?.id as string, match?.winner).subscribe(res => {
+      });
+      this.service.setCharacters(match?.id as string, match?.personnage1?.nom as string, match?.personnage2?.nom as string).subscribe(res => {
+      });
+    this.hideDialog();
   }
 
   delete(){

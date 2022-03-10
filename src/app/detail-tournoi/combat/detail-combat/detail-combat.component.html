@@ -1,1 +1,61 @@
-<p>id match {{match?.id}}</p>
+<mat-card class="mat-whiteframe-2dp">
+
+  <mat-card-title>Détails Match</mat-card-title>
+  <mat-card-content>
+    <div class="container">
+
+      <form novalidate [formGroup]="form" class="row">
+        <div class="col-md-12">
+          <h3>Choisir le gagnant du match</h3>
+          <mat-radio-group formControlName="idWinner" name="idWinner" aria-label="Choisir un gagnant">
+            <mat-radio-button value="{{match?.participant1?.id}}" [checked]="match?.winner == match?.participant1?.id">
+              <img src="{{match?.participant1?.photo}}"/>
+              {{match?.participant1?.pseudo}}
+            </mat-radio-button>
+            <mat-radio-button value="0" [checked]="match?.winner == '0'">?</mat-radio-button>
+            <mat-radio-button value="{{match?.participant2?.id}}" [checked]="match?.winner == match?.participant2?.id">
+              <img src="{{match?.participant2?.photo}}"/>
+              {{match?.participant2?.pseudo}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <h3 style="padding-top: 25px;">Choisir les personnages joués par les participants</h3>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Personnage de {{match?.participant1?.pseudo}}</mat-label>
+            <mat-select formControlName="namePersonnage1" name="namePersonnage1" value="{{match?.personnage1?.nom}}">
+              <mat-option *ngFor="let personnage of Personnages" [value]="personnage.name">
+                <img src="{{ personnage?.images?.icon }}"/>
+                {{personnage?.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Personnage de {{match?.participant2?.pseudo}}</mat-label>
+            <mat-select formControlName="namePersonnage2" name="namePersonnage2" value="{{match?.personnage2?.nom}}">
+              <mat-option *ngFor="let personnage of Personnages" [value]="personnage.name">
+                <img src="{{ personnage?.images?.icon }}"/>
+                {{personnage?.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </form>
+
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Annuler</button>
+    <button mat-button type="submit" color="primary" (click)="submit(form.value)" [disabled]="!form.valid">Valider
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+
+
+
