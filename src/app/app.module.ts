@@ -39,6 +39,7 @@ import { GraphStatsComponent } from './graph-stats/graph-stats.component';
 import {NgxEchartsModule} from "ngx-echarts";
 import {MatSelectModule} from "@angular/material/select";
 import { DetailCombatComponent } from './detail-tournoi/combat/detail-combat/detail-combat.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { DetailCombatComponent } from './detail-tournoi/combat/detail-combat/det
     AjoutTournoiComponent,
     FormulaireTournoiComponent,
     GraphStatsComponent,
-    DetailCombatComponent
+    DetailCombatComponent,
+    LoadingComponent
   ],
     imports: [
         HttpClientModule,

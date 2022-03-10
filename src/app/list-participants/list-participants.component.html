@@ -4,9 +4,7 @@
     <label>Recherche</label>
     <input [(ngModel)]="search" type="text" placeholder="Marc" (keyup)="searchOnList()">
   </div>
-  <div class="row">
-      <card-participants *ngFor="let participant of ParticipantsFilter" class="col-md-3" [participant]="participant" (participantDelete)="delete($event)" (participantUpdate)="update($event)"></card-participants>
-  </div>
+  <div *ngIf="loading == true; then displayLoading else displayParticipants"></div>
   <section class="buttons-fab">
     <button (click)="switchView()" mat-fab class="btn-switch">
       <em class="material-icons" *ngIf="view === 'card'">list</em>
@@ -27,23 +25,21 @@
 </div>
 
 <ng-template #displayLoading>
-  <div class="loadingPacman">
-
-
-    <div class="loadingio-spinner-bean-eater-pzaqmb9bvy">
-      <div class="ldio-9ed3khaa6gb">
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-loading></app-loading>
 </ng-template>
+<ng-template #displayParticipants [ngSwitch]="view">
+  <div *ngSwitchCase="'card'" class="row">
+      <card-participants *ngFor="let participant of ParticipantsFilter" class="col-md-3" [participant]="participant" (participantDelete)="delete($event)" (participantUpdate)="update($event)"></card-participants>
+  </div>
+  <section *ngSwitchCase="'list'">
+    <mat-list>
+      <mat-list-item *ngFor="let participant of ParticipantsFilter" class="mat-whiteframe-2dp mat-card">
+        <img mat-list-avatar src="{{participant?.photo}}" alt="Icon participant" />
+        <h3 mat-line>{{participant?.pseudo}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </section>
+
+</ng-template>
+
 

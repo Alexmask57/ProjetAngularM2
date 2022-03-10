@@ -4,7 +4,6 @@
     <label>Recherche</label>
     <input [(ngModel)]="search" type="text" placeholder="Mario" (keyup)="searchOnList()">
   </div>
-  {{loading ? ('true') : ('false')}}
   <div *ngIf="loading == true; then displayLoading else displayCharacters"></div>
   <section class="buttons-fab">
     <button (click)="switchView()" mat-fab class="btn-switch">
@@ -15,22 +14,7 @@
 </div>
 
 <ng-template #displayLoading>
-  <div class="loadingPacman">
-    <div class="loadingio-spinner-bean-eater-pzaqmb9bvy">
-      <div class="ldio-9ed3khaa6gb">
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-loading></app-loading>
 </ng-template>
 <ng-template #displayCharacters [ngSwitch]="view">
   <div *ngSwitchCase="'card'" class="row">

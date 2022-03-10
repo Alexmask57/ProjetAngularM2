@@ -1,5 +1,13 @@
-<div  class="tf-tree">
-  <ul>
-    <combat *ngFor="let combat of tournoi?.combats" [combat]="combat"></combat>
-  </ul>
-</div>
+<div *ngIf="loading == true; then displayLoading else displayTree"></div>
+
+<ng-template #displayLoading>
+  <app-loading></app-loading>
+</ng-template>
+
+<ng-template #displayTree>
+  <div  class="tf-tree">
+    <ul>
+      <combat *ngFor="let combat of tournoi?.combats" [combat]="combat"></combat>
+    </ul>
+  </div>
+</ng-template>

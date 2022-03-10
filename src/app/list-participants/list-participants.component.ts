@@ -14,7 +14,7 @@ import {mergeMap} from "rxjs";
 export class ListParticipantsComponent implements OnInit {
 
   private addDialog: MatDialogRef<AjoutPopupComponent> | any;
-  loading: boolean = false;
+  loading: boolean = true;
   Participants: Participant[] = [];
   ParticipantsFilter: Participant[] = [];
   view:string = "card";
@@ -22,12 +22,15 @@ export class ListParticipantsComponent implements OnInit {
   search:string = "";
 
   constructor(private readonly userService: UserServiceService, private readonly SsbCharactersService: SsbCharactersService, public dialog: MatDialog) {
+    this.loading = true;
   }
 
   ngOnInit(): void {
     this.userService.fetch().subscribe(list => {
       this.Participants = list || [];
       this.ParticipantsFilter = this.Participants;
+
+      this.loading = false;
     });
   }
 

@@ -9,16 +9,19 @@ import {TournamentServiceService} from "../../service/tournament-service.service
 })
 export class HistoriqueTournoisComponent implements OnInit {
 
+  loading: boolean = true;
   listTournoi: Tournoi[] = [];
   columnTournoi: string[] = ['id', 'date', 'etat', 'nbParticipants'];
 
-  constructor(private readonly tournoiService: TournamentServiceService) { }
+  constructor(private readonly tournoiService: TournamentServiceService) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     this.tournoiService.fetch().subscribe(list => {
       this.listTournoi= list || [];
-      console.log(list);
-      console.log(this.listTournoi);
+
+      this.loading = false;
     });
   }
 

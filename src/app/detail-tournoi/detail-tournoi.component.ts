@@ -10,14 +10,20 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DetailTournoiComponent implements OnInit {
 
+  loading:boolean = true;
   tournoi: TournoiDetail | undefined;
   oui: string = "oui";
 
-  constructor(private readonly service:TournamentServiceService, private readonly route: ActivatedRoute) { }
+  constructor(private readonly service:TournamentServiceService, private readonly route: ActivatedRoute) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
-    this.route.data.subscribe(( tournoi: any) => (this.tournoi = tournoi.tournoi));
-    console.log(this.tournoi);
+    this.route.data.subscribe(( tournoi: any) => {
+      this.tournoi = tournoi.tournoi;
+      this.loading = false;});
+
+
   }
 
 }

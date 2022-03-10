@@ -24,9 +24,10 @@ export class ListPersonnagesComponent implements OnInit {
     this.SsbCharactersService.fetch().subscribe(Characters => {
       this.Personnages = Characters || [];
       this.PersonnagesFilter = this.Personnages;
+
+      this.loading = false;
     });
 
-    this.loading = false;
   }
 
   switchView() {

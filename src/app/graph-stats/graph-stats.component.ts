@@ -10,16 +10,20 @@ import {EChartsOption} from "echarts";
 })
 export class GraphStatsComponent implements OnInit {
 
+  loading:boolean = true;
   options: any;
   listStats: Stats | undefined;
 
-  constructor(private readonly tournoiService: TournamentServiceService) { }
+  constructor(private readonly tournoiService: TournamentServiceService) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     this.tournoiService.getStats().subscribe(list => {
       this.listStats = list || undefined;
-      console.log(list);
       this.setOptions();
+
+      this.loading = false;
     });
   }
 

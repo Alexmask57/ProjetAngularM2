@@ -1,4 +1,13 @@
 <div class="container">
   <h1>Statistiques de victoire :</h1>
-  <div echarts [options]="options" class="demo-chart"></div>
+
+  <div *ngIf="loading == true; then displayLoading else displayGraph"></div>
+
+  <ng-template #displayLoading>
+    <app-loading></app-loading>
+  </ng-template>
+
+  <ng-template #displayGraph>
+    <div echarts [options]="options" class="demo-chart"></div>
+  </ng-template>
 </div>

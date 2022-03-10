@@ -15,6 +15,8 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class HomeComponent implements OnInit {
 
+  loading:boolean = true;
+
   /**
    * Boite de dialogue pour l'ajout d'un tournoi
    * @private
@@ -38,12 +40,16 @@ export class HomeComponent implements OnInit {
    */
   dialogStatus = 'inactive';
 
-  constructor(private readonly tournoiService:TournamentServiceService, public dialog: MatDialog, private readonly router: Router) { }
+  constructor(private readonly tournoiService:TournamentServiceService, public dialog: MatDialog, private readonly router: Router) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     this.tournoiService.fetchOpen().subscribe(list => {
       this.listOpen = list || [];
       this.dataSource.data = this.listOpen;
+
+      this.loading = false;
     });
   }
 
