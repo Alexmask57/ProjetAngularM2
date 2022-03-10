@@ -44,6 +44,7 @@ export class TournamentServiceService {
    * @param listeParticipants liste des participants
    */
   create(listeParticipants: Participant[]): Observable<Tournoi> {
+    console.log(listeParticipants);
     let structParticipants: any = [];
     listeParticipants.forEach(p => {
       structParticipants.push({"idParticipant": p.id});

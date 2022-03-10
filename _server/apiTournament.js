@@ -27,48 +27,15 @@ const getById = async function (req, res) {
   var id = req.params['id'];
   console.log('Get tournament id : ' + id);
 
-  const tournament = await sqlTournament.getById(id);
-  let combats = await sqlMatch.getByIdTournoi(id);
 
-  for(let c of combats) {
-    if(c.idUser1 != 0) {
-      let user = (await sqlUser.getById(c.idUser1))[0];
-      if(user.photo != "")
-        user.photo = base64_encode(user.photo);
-      c["participant1"] = user;
-    }
-    else
-      c["participant1"] = {}
 
-    if(c.idUser2 != 0) {
-      let user = (await sqlUser.getById(c.idUser2))[0];
-      if(user.photo != "")
-        user.photo = base64_encode(user.photo);
-      c["participant2"] = user;
-    }
-    else
-      c["participant2"] = {}
-
-    if(c.idChar1 != 0)
-      c["personnage1"] = (await sqlCharacter.getById(c.idChar1))[0];
-    else
-      c["personnage1"] = {}
-
-    if(c.idChar2 != 0)
-      c["personnage2"] = (await sqlCharacter.getById(c.idChar2))[0];
-    else
-      c["personnage2"] = {}
-  }
-
-  //ajout des combats au tournoi
-  tournament[0]["combats"] = list_to_tree(combats.reverse())//reverse pour avoir le dernier match en premier dans la liste
-  //console.log(combats);
-  return res.status(200).json(tournament[0]);
+  return res.status(200).json(await getDetailTournoi(id));
 }
 
 //create a tournament
 //TODO check if idUser exist
 const create = async function (req, res, next) {
+  console.log("Create tournament");
   //parameters of tournament
   var json = req.body;
 
@@ -86,12 +53,11 @@ const create = async function (req, res, next) {
     for(const combat of tournament) {
       let idC = (await sqlMatch.create(combat)).insertId;
     }
+    res.status(201).json(await getDetailTournoi(idT));
   } catch (e) {
     console.log("ERROR TOURNAMENT : " + e);
     next(e);
   }
-  res.status(201);
-  res.send();
 }
 
 //add character to a fight
@@ -173,6 +139,47 @@ const winnerMatch = async function (req, res, next) {
     console.error("ERROR !! : " + err);
     next(err);
   }
+}
+
+//recupere un tournoi avec tous ses macths
+const getDetailTournoi = async function(id) {
+  const tournament = await sqlTournament.getById(id);
+  let combats = await sqlMatch.getByIdTournoi(id);
+
+  for(let c of combats) {
+    if(c.idUser1 != 0) {
+      let user = (await sqlUser.getById(c.idUser1))[0];
+      if(user.photo != "")
+        user.photo = base64_encode(user.photo);
+      c["participant1"] = user;
+    }
+    else
+      c["participant1"] = {}
+
+    if(c.idUser2 != 0) {
+      let user = (await sqlUser.getById(c.idUser2))[0];
+      if(user.photo != "")
+        user.photo = base64_encode(user.photo);
+      c["participant2"] = user;
+    }
+    else
+      c["participant2"] = {}
+
+    if(c.idChar1 != 0)
+      c["personnage1"] = (await sqlCharacter.getById(c.idChar1))[0];
+    else
+      c["personnage1"] = {}
+
+    if(c.idChar2 != 0)
+      c["personnage2"] = (await sqlCharacter.getById(c.idChar2))[0];
+    else
+      c["personnage2"] = {}
+  }
+
+  //ajout des combats au tournoi
+  tournament[0]["combats"] = list_to_tree(combats.reverse())//reverse pour avoir le dernier match en premier dans la liste
+
+  return tournament[0];
 }
 
 //recuperer le nb de victoires par match et par tournoi
