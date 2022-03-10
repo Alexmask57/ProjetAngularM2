@@ -29,7 +29,7 @@ export class SsbCharactersService {
    * @param name nom du personnage
    */
   fetchOne(name: string): Observable<Character> {
-    return this.http.get<Character>(this.url + "/" + name);
+    return this.http.get<Character>(this.url + "/" + name?.toLowerCase());
   }
 
 }

@@ -1,12 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Match} from "../../../models/Match";
-import {Router} from "@angular/router";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {AjoutPopupComponent} from "../../list-participants/ajout-popup/ajout-popup.component";
-import {DetailCombatComponent} from "./detail-combat/detail-combat.component";
-import {Participant} from "../../../models/Participant";
-import {mergeMap} from "rxjs";
-import {TournamentServiceService} from "../../../service/tournament-service.service";
+import {SsbCharactersService} from "../../../service/ssb-characters.service";
+import {Character} from "../../../models/Character";
 
 @Component({
   selector: 'combat',
@@ -19,11 +14,26 @@ export class CombatComponent implements OnInit {
 
   @Output('showDialog') showDialogEvent$: EventEmitter<any>;
 
-  constructor() {
+  Personnage1: Character |undefined;
+  Personnage2: Character |undefined;
+
+  constructor(private readonly SsbCharactersService: SsbCharactersService) {
     this.showDialogEvent$ = new EventEmitter<any>();
   }
 
+
   ngOnInit(): void {
+    if (this.combat?.personnage1?.nom){
+      this.SsbCharactersService.fetchOne(this.combat?.personnage1?.nom as string).subscribe(Character => {
+        this.Personnage1 = Character || [];
+      });
+    }
+
+    if (this.combat?.personnage2?.nom) {
+      this.SsbCharactersService.fetchOne(this.combat?.personnage2?.nom as string).subscribe(Character => {
+        this.Personnage2 = Character || [];
+      });
+    }
   }
 
   showDialog(combat: Match | undefined){

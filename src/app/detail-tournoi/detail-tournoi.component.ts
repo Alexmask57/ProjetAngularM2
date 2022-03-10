@@ -7,6 +7,7 @@ import {AjoutPopupComponent} from "../list-participants/ajout-popup/ajout-popup.
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DetailCombatComponent} from "./combat/detail-combat/detail-combat.component";
 import {DialogComponent} from "../partage/dialog/dialog.component";
+import {Participant} from "../../models/Participant";
 
 @Component({
   selector: 'detail-tournoi',
@@ -35,20 +36,21 @@ export class DetailTournoiComponent implements OnInit {
 
 
   showDialog(match: Match) {
-    this.dialogStatus = 'active';
-    this.detailsMatchDialog = this.dialog.open(DetailCombatComponent, {
-        width: '600px',
-        data: match,
-      }
-    );
+    if (match.participant1?.id && match.participant2?.id){
+      this.dialogStatus = 'active';
+      this.detailsMatchDialog = this.dialog.open(DetailCombatComponent, {
+          width: '600px',
+          data: match,
+        }
+      );
 
-    this.detailsMatchDialog.afterClosed().subscribe((match: any) => {
-      this.dialogStatus = 'inactive';
-      console.log(match);
-      if (match) {
-        this.update(match);
-      }
-    });
+      this.detailsMatchDialog.afterClosed().subscribe((match: any) => {
+        this.dialogStatus = 'inactive';
+        if (match) {
+          this.update(match);
+        }
+      });
+    }
   }
 
   hideDialog() {
@@ -99,6 +101,20 @@ export class DetailTournoiComponent implements OnInit {
     if (this.deleteDialog != undefined) {
       this.deleteDialog.close();
     }
+  }
+
+  checkWinner(): boolean {
+    return this.tournoi?.combats[0].winner != '0';
+  }
+
+  winnerIsPlayer1(): boolean {
+    return this.tournoi?.combats[0].winner == this.tournoi?.combats[0].participant1?.id;
+  }
+
+  getWinner(): Participant {
+    if (this.winnerIsPlayer1())
+      return this.tournoi?.combats[0]?.participant1 as Participant;
+    return this.tournoi?.combats[0]?.participant2 as Participant;
   }
 
 }

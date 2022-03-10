@@ -7,7 +7,7 @@
       <form novalidate [formGroup]="form" class="row">
         <div class="col-md-12">
           <h3>Choisir le gagnant du match</h3>
-          <mat-radio-group formControlName="idWinner" name="idWinner" aria-label="Choisir un gagnant">
+          <mat-radio-group [disabled]="this.match.winner != '0'" formControlName="idWinner" name="idWinner" aria-label="Choisir un gagnant">
             <mat-radio-button value="{{match?.participant1?.id}}" [checked]="match?.winner == match?.participant1?.id">
               <img src="{{match?.participant1?.photo}}"/>
               {{match?.participant1?.pseudo}}

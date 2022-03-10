@@ -31,7 +31,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="columnTournoi"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnTournoi;"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnTournoi;" (click)="displayDetailsTournoi(row)"></tr>
       </table>
     </section>
   </ng-template>

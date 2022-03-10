@@ -26,13 +26,11 @@ mat-card-content {
   font-size: 1vw;
 }
 
-.participant span {
 
-}
 
-.participant img {
+.participantImage {
   border-radius: 10%;
-  height: 100%;
+  width: 100%;
   max-height: 100%;
   max-width: 100%;
   object-fit: cover;
@@ -53,4 +51,11 @@ mat-card-content {
 
 .blockInterrogation {
   height: auto!important;
+}
+
+.personnageImage {
+  position: absolute;
+  width: 2vw;
+  height: 2vw;
+  left: 70%;
 }

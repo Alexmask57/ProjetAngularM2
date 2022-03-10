@@ -8,7 +8,7 @@
   <div class="content"></div>
   <div  class="tf-tree">
     <ul class="arbre">
-      <combat *ngFor="let combat of tournoi?.combats" [combat]="combat" (showDialog)="showDialog($event)"></combat>
+      <section *ngIf="checkWinner(); then fini else nonFini"></section>
     </ul>
   </div>
   <section class="buttons-fab">
@@ -16,4 +16,28 @@
       <em class="material-icons">delete</em>
     </button>
   </section>
+</ng-template>
+
+<ng-template #fini>
+  <li>
+  <span class="tf-nc">
+    <mat-card class="cardParticipant">
+      <mat-card-content>
+        <div class="participant">
+          <img class="participantImage" [src]="getWinner().photo"/>
+          <span>
+            {{getWinner().pseudo}}
+          </span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </span>
+    <ul>
+      <combat *ngFor="let combat of tournoi?.combats" [combat]="combat" (showDialog)="showDialog($event)"></combat>
+    </ul>
+  </li>
+</ng-template>
+
+<ng-template #nonFini>
+  <combat *ngFor="let combat of tournoi?.combats" [combat]="combat" (showDialog)="showDialog($event)"></combat>
 </ng-template>

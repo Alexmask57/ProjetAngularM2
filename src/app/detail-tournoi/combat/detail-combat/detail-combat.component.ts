@@ -29,9 +29,9 @@ export class DetailCombatComponent implements OnInit {
 
   ngOnInit(): void {
     this.SsbCharactersService.fetch().subscribe(Characters => {
-      this.Personnages = Characters || [];
+      // @ts-ignore
+      this.Personnages = Characters.sort((a, b) => (a?.name > b?.name) ? 1 : -1) || [];
     });
-    console.log(this.match);
   }
 
   closeDialog(result: Match & {mode?: string} | null = null) {

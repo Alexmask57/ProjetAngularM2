@@ -23,18 +23,34 @@
 </li>
 
 <ng-template #participant1>
-  <img [src]="combat?.participant1?.photo"/>
+  <div style="position: relative;">
+    <img class="participantImage" [src]="combat?.participant1?.photo"/>
+    <section *ngIf="combat?.personnage1?.id; then imagePersonnage1 else imagePersonnageVide"></section>
+  </div>
   <span>{{combat?.participant1?.pseudo}}</span>
 </ng-template>
 
 <ng-template #participant2>
-  <img [src]="combat?.participant2?.photo"/>
+  <div style="position: relative;">
+    <img class="participantImage" [src]="combat?.participant2?.photo"/>
+    <section *ngIf="combat?.personnage1?.id; then imagePersonnage2 else imagePersonnageVide"></section>
+  </div>
   <span>{{combat?.participant2?.pseudo}}</span>
 </ng-template>
 
 <ng-template #participantVide>
-  <img class="blockInterrogation" src="assets/blockInterrogation.jpg"/>
+  <img class="participantImage blockInterrogation" src="assets/blockInterrogation.jpg"/>
   <span>En attente</span>
 </ng-template>
 
+<ng-template #imagePersonnageVide>
+  <img class="personnageImage" src="assets/blockInterrogation.jpg">
+</ng-template>
 
+<ng-template #imagePersonnage1>
+  <img class="personnageImage" [src]="Personnage1?.images?.icon">
+</ng-template>
+
+<ng-template #imagePersonnage2>
+  <img class="personnageImage" [src]="Personnage2?.images?.icon">
+</ng-template>
