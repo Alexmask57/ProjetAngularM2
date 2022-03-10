@@ -4,6 +4,11 @@
 }
 mat-card {
   padding: 0;
+  transition: box-shadow 0.2s;
+}
+mat-card:hover {
+  cursor: pointer;
+  box-shadow: 0 15px 22px 3px rgba(0, 0, 0, 0.14), 0 9px 20px 8px rgba(0, 0, 0, 0.12);
 }
 
 mat-card-content {

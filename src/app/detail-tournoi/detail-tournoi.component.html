@@ -7,7 +7,7 @@
 <ng-template #displayTree>
   <div  class="tf-tree">
     <ul>
-      <combat *ngFor="let combat of tournoi?.combats" [combat]="combat"></combat>
+      <combat *ngFor="let combat of tournoi?.combats" [combat]="combat" (showDialog)="showDialog($event)"></combat>
     </ul>
   </div>
 </ng-template>

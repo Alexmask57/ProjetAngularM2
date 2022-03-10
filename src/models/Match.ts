@@ -12,7 +12,7 @@ export interface Match {
     id: string;
     nom: string;
   } | undefined;
-  winner: string | undefined;
+  winner: string;
   niveau: string;
   idTournoi: string;
   idParent: string | undefined;

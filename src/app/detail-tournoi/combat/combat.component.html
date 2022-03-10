@@ -1,7 +1,7 @@
 
 <li>
   <span class="tf-nc">
-    <mat-card class="cardParticipant">
+    <mat-card class="cardParticipant" (click)="showDialog(this.combat)">
       <mat-card-content>
         <div class="participant">
           <div *ngIf="combat?.participant1?.id; then participant1 else participantVide"></div>
@@ -17,7 +17,7 @@
   </span>
   <ul *ngIf="combat?.children?.length != 0">
     <li *ngFor="let c of combat?.children">
-      <combat [combat]="c"></combat>
+      <combat [combat]="c" (showDialog)="showDialog($event)"></combat>
     </li>
   </ul>
 </li>
