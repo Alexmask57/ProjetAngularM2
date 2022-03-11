@@ -65,9 +65,15 @@ const addCharacter = async function (req, res, next) {
   let idM = req.params['idM'];
   let json = req.body;
   console.log("Add characters fight id : " + idM);
+
+  let idChar1 = 0;  //valeurs par défaut si il n'y a pas de personnage définis
+  let idChar2 = 0;
+
   try {
-    let idChar1 = (await sqlCharacter.getByName(json.char1))[0].id;
-    let idChar2 = (await sqlCharacter.getByName(json.char2))[0].id;
+    if(json.char1 != '')
+      idChar1 = (await sqlCharacter.getByName(json.char1))[0].id;
+    if(json.char2 != '')
+      idChar2 = (await sqlCharacter.getByName(json.char2))[0].id;
     res.json(await sqlMatch.addCharacter(idM, idChar1, idChar2));
   } catch (err) {
     console.error("ERROR !! : " + err);
