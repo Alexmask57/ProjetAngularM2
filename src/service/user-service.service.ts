@@ -53,4 +53,12 @@ export class UserServiceService {
     return this.http.delete(this.url + '/' + id);
   }
 
+  /**
+   * Vérifie si un participant est dans un tournoi en cours, pour bloquer sa suppression
+   * @param id id du participant à vérifier
+   */
+  checkOnTournoi(id: string): Observable<string> {
+    return this.http.get<string>(this.url + '/onTournoi/' + id);
+  }
+
 }

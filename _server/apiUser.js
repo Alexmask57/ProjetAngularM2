@@ -83,6 +83,17 @@ const remove = async function (req, res, next) {
   }
 }
 
+//check if a user is on a opened tournament
+const checkOnTournoi = async function(req, res, next) {
+  var id = req.params['id'];
+
+  try {
+    res.json((await user.checkOnTournoi(id))[0].result);
+  } catch (err) {
+    next(err);
+  }
+}
+
 function getImgInfo(base64) {
   var matches = base64.match(/^data:image\/([A-Za-z]+);base64,(.+)$/),
     response = {};
@@ -97,4 +108,4 @@ function getImgInfo(base64) {
   return response;
 }
 
-export {listAll, getById, create, update, remove}
+export {listAll, getById, create, update, remove, checkOnTournoi}

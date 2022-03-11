@@ -27,6 +27,7 @@ app.use(function(req, res, next) {
 
 // JSON API USER
 app.get(url._userUrl, apiUser.listAll);
+app.get(url._userUrl + '/onTournoi/:id', apiUser.checkOnTournoi);
 app.get(url._userUrl + '/:id', apiUser.getById);
 app.post(url._userUrl, apiUser.create);
 app.put(url._userUrl + '/:id', apiUser.update);

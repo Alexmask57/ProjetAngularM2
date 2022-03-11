@@ -156,16 +156,17 @@ CREATE TABLE `tournoi` (
 CREATE TABLE `user` (
   `id` int NOT NULL,
   `pseudo` varchar(30) NOT NULL,
-  `photo` varchar(80) NOT NULL
+  `photo` varchar(80) NOT NULL,
+  `supprime` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `pseudo`, `photo`) VALUES
-(1, 'jim', 'jim.jpg'),
-(2, 'alexmask', 'alexmask.jpeg');
+INSERT INTO `user` (`id`, `pseudo`, `photo`, `supprime`) VALUES
+(1, 'jim', 'jim.jpg', 0),
+(2, 'alexmask', 'alexmask.jpeg', 0);
 
 --
 -- Indexes for dumped tables
