@@ -1,14 +1,9 @@
-<div class="container">
-  <mat-toolbar color="primary" class="main-toolbar">
-    <span>Audio Player</span>
-  </mat-toolbar>
+
+<div class="containerAudio">
+
   <div class="content">
-    <div class="logo">
-      <mat-icon>music_note</mat-icon>
-      <div>Audio Player</div>
-    </div>
     <mat-list color="primary">
-      <h3 mat-subheader>Songs</h3>
+      <h3 mat-subheader>Gestion des musiques</h3>
       <mat-list-item *ngFor="let file of files; let i = index" (click)="openFile(file, i)">
         <mat-icon color="primary" mat-list-icon>music_note</mat-icon>
         <h4 mat-line>{{ file.name }}</h4>
@@ -19,7 +14,8 @@
       </mat-list-item>
     </mat-list>
   </div>
-    <mat-toolbar color="primary">
+  <div class="media-footer">
+    <mat-toolbar>
       <mat-toolbar-row>
         {{ state?.readableCurrentTime }}
         <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error || currentFile.index === undefined"></mat-slider>
@@ -40,3 +36,5 @@
         </button>
       </mat-toolbar-row>
     </mat-toolbar>
+  </div>
+</div>

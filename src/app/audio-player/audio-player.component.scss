@@ -1,7 +1,11 @@
-.container {
+
+
+.containerAudio {
+  position: relative;
+  height: 100vh;
   .main-toolbar {
     .spacer {
-      flex: 1 1 auto;
+      height: 5vh;
     }
     .toolbar-btn {
       font-size: 16px;
@@ -24,12 +28,17 @@
     }
   }
 
+  mat-list {
+    height: 100%;
+    max-height: 100%;
+  }
+
   .media-footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    position: fixed;
+    bottom: 0;
     .time-slider {
-      width: 100% !important;
+      width: 90% !important;
       margin-left: 20px;
       margin-right: 20px;
     }

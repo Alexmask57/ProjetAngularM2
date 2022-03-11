@@ -10,16 +10,64 @@ export class CloudService {
     // tslint:disable-next-line: max-line-length
     {
       url:
-        "https://ia801504.us.archive.org/3/items/EdSheeranPerfectOfficialMusicVideoListenVid.com/Ed_Sheeran_-_Perfect_Official_Music_Video%5BListenVid.com%5D.mp3",
-      name: "Perfect",
-      artist: " Ed Sheeran"
+        "assets/Music/ssbuOpening.mp3",
+      name: "SSBU Opening",
+      artist: "Super Smash Bros Ultimate"
     },
     {
       url:
-        "assets/ssbOpening.mp3",
-      name: "SSB",
-      artist: "Nintendo"
-    }
+        "assets/Music/ssbuMenu.mp3",
+      name: "SSBU Menu",
+      artist: "Super Smash Bros Ultimate"
+    },
+    {
+      url:
+        "assets/Music/ssbuBattelfield.mp3",
+      name: "SSBU Battelfield",
+      artist: "Super Smash Bros Ultimate"
+    },
+    {
+      url:
+        "assets/Music/ssbbOpening.mp3",
+      name: "SSBB Opening",
+      artist: "Super Smash Bros Brawl"
+    },
+    {
+      url:
+        "assets/Music/pokemonDiamantPerleBattle.mp3",
+      name: "Pokemon Battle",
+      artist: "Pokemon Diamant et Perle"
+    },
+    {
+      url:
+        "assets/Music/superMarioBros.mp3",
+      name: "Super Mario Bros",
+      artist: "Super Mario Bros"
+    },
+    {
+      url:
+        "assets/Music/dragonQuest.mp3",
+      name: "Dragon Quest",
+      artist: "Super Smash Bros Ultimate"
+    },
+    {
+      url:
+        "assets/Music/pacman.mp3",
+      name: "Pacman",
+      artist: "Super Smash Bros Ultimate"
+    },
+    {
+      url:
+        "assets/Music/superMarioGalaxy.mp3",
+      name: "Super Mario Galaxy",
+      artist: "Super Smash Bros Ultimate"
+    },
+    {
+      url:
+        "assets/Music/zelda.mp3",
+      name: "Zelda",
+      artist: "Super Smash Bros Ultimate"
+    },
   ];
 
   getFiles() {
