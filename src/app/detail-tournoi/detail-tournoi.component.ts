@@ -16,8 +16,12 @@ import {Alert} from "../../models/Alert";
 })
 export class DetailTournoiComponent implements OnInit {
 
-  loading:boolean = true;
-  tournoi: TournoiDetail | undefined;
+  loading:boolean = true;   //var pour le chargement
+
+  tournoi: TournoiDetail | undefined;   //tournoi à afficher
+  //un tournoi contient la liste de ses combats sous forme d'arbre dans le champ combats
+
+  //variables pour gestion fenetre dialogue en cas de suppression
   private detailsMatchDialog: MatDialogRef<DetailCombatComponent> | any;
   private deleteDialog: MatDialogRef<DialogComponent> | any;
   dialogStatus = 'inactive';
@@ -60,6 +64,7 @@ export class DetailTournoiComponent implements OnInit {
     }
   }
 
+  //pour mettre un jour un match avec le gagnant et les personnages joués
   update(match: Match) {
       this.service.setWinner(match?.id as string, match?.winner).subscribe(res => {
         this.service.setCharacters(match?.id as string, match?.personnage1?.nom as string, match?.personnage2?.nom as string).subscribe(res => {
@@ -110,6 +115,7 @@ export class DetailTournoiComponent implements OnInit {
     return this.tournoi?.combats[0].winner == this.tournoi?.combats[0].participant1?.id;
   }
 
+  //Permet de récupérer le gagnant d'un tournoi si celui-ci est terminé
   getWinner(): Participant {
     if (this.winnerIsPlayer1())
       return this.tournoi?.combats[0]?.participant1 as Participant;

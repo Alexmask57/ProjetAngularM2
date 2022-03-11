@@ -47,6 +47,8 @@ export class UserServiceService {
 
   /**
    * Supprime un participant à partir de son id
+   * le participant n'est pas réellement supprimé, on passe son champ "supprime" à vrai
+   * le but est d'éviter un bug lors de l'affichage d'un participant supprimé dans un match
    * @param id id du participant à supprimer
    */
   delete(id: string): Observable<any> {

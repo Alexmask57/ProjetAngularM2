@@ -14,6 +14,8 @@ import {AjoutPopupComponent} from "../../../list-participants/ajout-popup/ajout-
 })
 export class DetailCombatComponent implements OnInit {
 
+  //affichage d'un combat
+
   public Personnages: Character[] | undefined;
   public selectedPersonnage1: string = "";
   public selectedPersonnage2: string = "";

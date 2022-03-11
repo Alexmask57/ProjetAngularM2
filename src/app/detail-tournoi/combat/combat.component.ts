@@ -11,6 +11,9 @@ import {Participant} from "../../../models/Participant";
 })
 export class CombatComponent implements OnInit {
 
+  //composant représentant un match
+  //contient ses matchs enfants dans le champ children
+
   @Input() combat: Match | undefined;
 
   @Output('showDialog') showDialogEvent$: EventEmitter<any>;
@@ -24,6 +27,7 @@ export class CombatComponent implements OnInit {
 
 
   ngOnInit(): void {
+    //on recupère les personnages correspondant depuis une API externe si ils sont définis
     if (this.combat?.personnage1?.nom){
       this.SsbCharactersService.fetchOne(this.combat?.personnage1?.nom as string).subscribe(Character => {
         this.Personnage1 = Character || [];
@@ -41,6 +45,7 @@ export class CombatComponent implements OnInit {
     this.showDialogEvent$.emit(combat);
   }
 
+  //on affiche une croix sur le perdant
   IsLooser(participant: Participant | undefined): boolean{
     console.log(participant);
     if (this.combat?.winner != '0')
