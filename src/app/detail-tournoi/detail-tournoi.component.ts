@@ -61,15 +61,14 @@ export class DetailTournoiComponent implements OnInit {
   }
 
   update(match: Match) {
-    if (match?.winner)
       this.service.setWinner(match?.id as string, match?.winner).subscribe(res => {
-      });
-      this.service.setCharacters(match?.id as string, match?.personnage1?.nom as string, match?.personnage2?.nom as string).subscribe(res => {
-        this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['/detailsTournoi', this.tournoi?.id]);
+        this.service.setCharacters(match?.id as string, match?.personnage1?.nom as string, match?.personnage2?.nom as string).subscribe(res => {
+          this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/detailsTournoi', this.tournoi?.id]);
+          });
+          this.hideDialog();
         });
       });
-    this.hideDialog();
   }
 
   delete(){

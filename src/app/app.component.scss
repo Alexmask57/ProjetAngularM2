@@ -1,0 +1,9 @@
+.allerAuContenu {
+    position: absolute;
+    z-index: -1;
+}
+
+.allerAuContenu:focus {
+  display: inline;
+  z-index: 100;
+}
