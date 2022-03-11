@@ -23,6 +23,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatInputModule} from "@angular/material/input";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatSliderModule} from '@angular/material/slider';
 import { ListPersonnagesComponent } from './list-personnages/list-personnages.component';
 import { CardPersonnageComponent } from './list-personnages/card-personnage/card-personnage.component';
 import { HistoriqueTournoisComponent } from './historique-tournois/historique-tournois.component';
@@ -45,6 +46,7 @@ import { RefreshComponent } from './partage/refresh/refresh.component';
 import { MarioComponent } from './loading/mario/mario.component';
 import { PacmanComponent } from './loading/pacman/pacman.component';
 import { MarioFixComponent } from './partage/mario-fix/mario-fix.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 @NgModule({
   declarations: [
@@ -71,10 +73,12 @@ import { MarioFixComponent } from './partage/mario-fix/mario-fix.component';
     RefreshComponent,
     MarioComponent,
     PacmanComponent,
-    MarioFixComponent
+    MarioFixComponent,
+    AudioPlayerComponent
   ],
     imports: [
         HttpClientModule,
+        MatSliderModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
