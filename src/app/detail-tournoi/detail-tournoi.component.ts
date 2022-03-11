@@ -3,11 +3,11 @@ import {TournamentServiceService} from "../../service/tournament-service.service
 import {TournoiDetail} from "../../models/Tournoi";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Match} from "../../models/Match";
-import {AjoutPopupComponent} from "../list-participants/ajout-popup/ajout-popup.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DetailCombatComponent} from "./combat/detail-combat/detail-combat.component";
 import {DialogComponent} from "../partage/dialog/dialog.component";
 import {Participant} from "../../models/Participant";
+import {Alert} from "../../models/Alert";
 
 @Component({
   selector: 'detail-tournoi',
@@ -61,7 +61,6 @@ export class DetailTournoiComponent implements OnInit {
   }
 
   update(match: Match) {
-    console.log(match);
     if (match?.winner)
       this.service.setWinner(match?.id as string, match?.winner).subscribe(res => {
       });
@@ -82,9 +81,10 @@ export class DetailTournoiComponent implements OnInit {
 
   showDeleteDialog() {
     this.dialogStatus = 'active';
+    let data: Alert = { response: true, texte: "Souhaitez-vous vraiment supprimer ce tournoi ?"}
     this.deleteDialog = this.dialog.open(DialogComponent, {
         width: '600px',
-        data: "Souhaitez-vous vraiment supprimer ce tournoi ?",
+        data: data,
       }
     );
 

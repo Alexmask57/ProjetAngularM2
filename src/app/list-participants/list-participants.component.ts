@@ -5,6 +5,8 @@ import {UserServiceService} from "../../service/user-service.service";
 import {AjoutPopupComponent} from "./ajout-popup/ajout-popup.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {mergeMap} from "rxjs";
+import {Alert} from "../../models/Alert";
+import {DialogComponent} from "../partage/dialog/dialog.component";
 
 @Component({
   selector: 'app-list-participants',
@@ -14,6 +16,7 @@ import {mergeMap} from "rxjs";
 export class ListParticipantsComponent implements OnInit {
 
   private addDialog: MatDialogRef<AjoutPopupComponent> | any;
+  private deleteDialog: MatDialogRef<DialogComponent> | any;
   loading: boolean = true;
   Participants: Participant[] = [];
   ParticipantsFilter: Participant[] = [];
@@ -89,6 +92,42 @@ export class ListParticipantsComponent implements OnInit {
     this.dialogStatus = 'inactive';
     if (this.addDialog != undefined) {
       this.addDialog.close();
+    }
+  }
+
+  showDeleteDialog(participant: Participant) {
+    this.userService
+      .checkOnTournoi(participant?.id as string)
+      .subscribe(res => {
+        let data: Alert = {};
+
+        if (res == '0')
+          data = { response: true, texte: "Souhaitez-vous vraiment supprimer ce participant ?"}
+        else
+          data = { response: false, texte: "Impossible de supprimer ce participant puisque celui-ci est dans un tournoi en cours."}
+
+        this.dialogStatus = 'active';
+        this.deleteDialog = this.dialog.open(DialogComponent, {
+            width: '600px',
+            data: data,
+          }
+        );
+
+        this.deleteDialog.afterClosed().subscribe((res: any) => {
+          this.dialogStatus = 'inactive';
+          if (res) {
+            this.delete(participant);
+            this.hideDeleteDialog()
+          }
+        });
+      });
+
+  }
+
+  hideDeleteDialog() {
+    this.dialogStatus = 'inactive';
+    if (this.deleteDialog != undefined) {
+      this.deleteDialog.close();
     }
   }
 

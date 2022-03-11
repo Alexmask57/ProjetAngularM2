@@ -29,14 +29,21 @@
 </ng-template>
 <ng-template #displayParticipants [ngSwitch]="view">
   <div *ngSwitchCase="'card'" class="row">
-      <card-participants *ngFor="let participant of ParticipantsFilter" class="col-md-3" [participant]="participant" (participantDelete)="delete($event)" (participantUpdate)="update($event)"></card-participants>
+      <card-participants *ngFor="let participant of ParticipantsFilter" class="col-md-3" [participant]="participant" (participantDelete)="showDeleteDialog($event)" (participantUpdate)="update($event)"></card-participants>
   </div>
   <section *ngSwitchCase="'list'">
     <mat-list>
       <mat-list-item *ngFor="let participant of ParticipantsFilter" class="mat-whiteframe-2dp mat-card">
         <img mat-list-avatar src="{{participant?.photo}}" alt="Icon participant" />
         <h3 mat-line>{{participant?.pseudo}}</h3>
+          <button mat-mini-fab aria-label="Editer" color="accent" [routerLink]="['/editParticipant', participant?.id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab aria-label="Supprimer" color="warn" (click)="showDeleteDialog(participant)">
+            <mat-icon>delete</mat-icon>
+          </button>
       </mat-list-item>
+
     </mat-list>
   </section>
 

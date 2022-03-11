@@ -365,7 +365,7 @@ html {
   width: $size;
 
   box-shadow: $mario-stand;
-  animation: mario_state 1.5s step-end infinite,
+  animation: mario_state 0.5s step-end infinite,
   jump 0.5s cubic-bezier(.45,.05,.56,1.24) infinite;
 }
 
