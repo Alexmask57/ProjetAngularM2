@@ -5,7 +5,7 @@ class url {
   static _charUrl = this._apiUrl + "/personnage";
   static _tournamentUrl = this._apiUrl + "/tournament";
 
-  static _imgUrl ="_server/data/picture";
+  static _imgUrl ="data/picture";
 }
 
 export {url};

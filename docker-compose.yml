@@ -1,6 +1,28 @@
 version: '3.1'
 
 services:
+  nodejs-server:
+    build:
+      context: ./_server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    container_name: node-api
+    volumes:
+      - ./_server:/_server
+      - /_server/node_modules
+
+  angular-ui:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    container_name: angular-ui
+    volumes:
+      - ./:/_angular
+      - /node_modules
+
   db:
     image: mysql:latest
     volumes:
@@ -10,6 +32,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=smashtournament
+
   myadmin:
     image: phpmyadmin/phpmyadmin
     ports:
