@@ -8,7 +8,7 @@ Membres du groupe:
   - Sid Nassym
 
 
-##Comment lancer le projet
+## Comment lancer le projet
 Le projet est entièrement "conteneurisé", pour lancer l'ensemble des contenneurs : `docker-compose up`
 
 - Lien vers le site : `http://localhost:4200/`
@@ -17,7 +17,7 @@ Le projet est entièrement "conteneurisé", pour lancer l'ensemble des contenneu
 
 - Lien vers phpMyAdmin (gestion bdd) : `http://localhost:8080/`
 
-##Structure du docker-compose
+## Structure du docker-compose
 Le projet est décomposé en 3 conteneurs:
 - `nodejs-server`: serveur back-end NodeJS avec express
 - `angular-ui`: serveur front-end avec angular
@@ -25,7 +25,7 @@ Le projet est décomposé en 3 conteneurs:
 
 Un dernier conteneur est présent pour pouvoir accéder à la bdd de manière graphique: `myadmin`
 
-##Un problème avec docker-compose ?
+## Un problème avec docker-compose ?
 Si jamais un problème se présente avec le container d'angular ou du back-end, 
 il est possible de lancer le projet sans de la manière suivante:
 
@@ -39,7 +39,7 @@ On peut ensuite lancer le projet:
 - Lancer la bdd et phpMyAdmin : `docker-compose up db myadmin`
 
 
-##Enjoy :)
+## Enjoy :)
 
 
 
