@@ -26,7 +26,13 @@ mat-card-content {
   font-size: 1vw;
 }
 
-
+.crossImage {
+  position: absolute;
+  width: 2.5vw;
+  height: 2.5vw;
+  left: 26%;
+  top: 30%;
+}
 
 .participantImage {
   border-radius: 10%;

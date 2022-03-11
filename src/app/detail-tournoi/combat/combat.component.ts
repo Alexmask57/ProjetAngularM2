@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Match} from "../../../models/Match";
 import {SsbCharactersService} from "../../../service/ssb-characters.service";
 import {Character} from "../../../models/Character";
+import {Participant} from "../../../models/Participant";
 
 @Component({
   selector: 'combat',
@@ -38,6 +39,14 @@ export class CombatComponent implements OnInit {
 
   showDialog(combat: Match | undefined){
     this.showDialogEvent$.emit(combat);
+  }
+
+  IsLooser(participant: Participant | undefined): boolean{
+    console.log(participant);
+    if (this.combat?.winner != '0')
+      return participant?.id != this.combat?.winner;
+    else
+      return false;
   }
 
 }
