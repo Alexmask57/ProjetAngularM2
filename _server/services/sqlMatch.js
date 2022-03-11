@@ -62,6 +62,7 @@ async function getStats() {
     '\tsum(case when combat.winner = user.id then 1 else 0 end) nbMatchs,\n' +
     '    sum(case when combat.winner = user.id AND combat.idParent IS NULL then 1 else 0 end) nbTournois\n' +
     'FROM user\n' +
+    'WHERE user.supprime = 0\n' +
     'LEFT JOIN combat\n' +
     'ON user.id = combat.winner\n' +
     'GROUP BY user.id');

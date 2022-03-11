@@ -27,8 +27,6 @@ const getById = async function (req, res) {
   var id = req.params['id'];
   console.log('Get tournament id : ' + id);
 
-
-
   return res.status(200).json(await getDetailTournoi(id));
 }
 
@@ -39,7 +37,6 @@ const create = async function (req, res, next) {
   //parameters of tournament
   var json = req.body;
 
-
   try {
     //ajout tournoi bdd
     var idT = (await sqlTournament.create(json.participants.length)).insertId;
@@ -47,7 +44,6 @@ const create = async function (req, res, next) {
     //generation tournoi
     var tournament = getBracket(idT, json.participants);
 
-    //console.log('TOURNAMENT : ' + tournament);
 
     //ajout matchs bdd
     for(const combat of tournament) {
@@ -82,7 +78,6 @@ const addCharacter = async function (req, res, next) {
 }
 
 //update a tournament
-//TODO check if id doesn't exist
 const update = async function (req, res, next) {
   var id = req.params['id'];
   var json = req.body;
@@ -97,7 +92,6 @@ const update = async function (req, res, next) {
 }
 
 //delete a tournament
-//TODO check if id doesn't exist
 const remove = async function (req, res, next) {
   var id = req.params['id'];
   console.log('Delete tournament id : ' + id);
@@ -111,16 +105,15 @@ const remove = async function (req, res, next) {
 }
 
 //set winner for a tournament
-// TODO check if body isn't empty
 const winnerMatch = async function (req, res, next) {
   var idM = req.params['idM'];
   var winner = req.body.winner;
 
   try {
-    //si il s'agit du dernier match du tournoi, on indique que le tournoi est terminé
     await sqlMatch.setWinner(idM, winner);
     let match = (await sqlMatch.getById(idM))[0];
 
+    //si il s'agit du dernier match du tournoi, on indique que le tournoi est terminé
     if(match.idParent == null)
       await sqlTournament.setTermine(match.idTournoi);
     else {
@@ -152,6 +145,7 @@ const getDetailTournoi = async function(id) {
   const tournament = await sqlTournament.getById(id);
   let combats = await sqlMatch.getByIdTournoi(id);
 
+  //pour le combat on récupère les participants associés si ils existent
   for(let c of combats) {
     if(c.idUser1 != 0) {
       let user = (await sqlUser.getById(c.idUser1))[0];
