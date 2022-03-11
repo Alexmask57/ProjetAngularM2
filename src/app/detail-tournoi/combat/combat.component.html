@@ -33,7 +33,7 @@
 <ng-template #participant2>
   <div style="position: relative;">
     <img class="participantImage" [src]="combat?.participant2?.photo"/>
-    <section *ngIf="combat?.personnage1?.id; then imagePersonnage2 else imagePersonnageVide"></section>
+    <section *ngIf="combat?.personnage2?.id; then imagePersonnage2 else imagePersonnageVide"></section>
   </div>
   <span>{{combat?.participant2?.pseudo}}</span>
 </ng-template>
