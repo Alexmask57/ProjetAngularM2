@@ -24,6 +24,7 @@
 
 <ng-template #participant1>
   <div style="position: relative;">
+    <img *ngIf="IsLooser(combat?.participant1)" class="crossImage" src="assets/cross.png">
     <img class="participantImage" [src]="combat?.participant1?.photo"/>
     <section *ngIf="combat?.personnage1?.id; then imagePersonnage1 else imagePersonnageVide"></section>
   </div>
@@ -32,6 +33,7 @@
 
 <ng-template #participant2>
   <div style="position: relative;">
+    <img *ngIf="IsLooser(combat?.participant2)" class="crossImage" src="assets/cross.png">
     <img class="participantImage" [src]="combat?.participant2?.photo"/>
     <section *ngIf="combat?.personnage2?.id; then imagePersonnage2 else imagePersonnageVide"></section>
   </div>
