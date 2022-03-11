@@ -7,8 +7,8 @@
 # Only exists if Bazel was run
 /bazel-out
 
-# dependencies
-/node_modules
+# angular dependencies
+/_angular/node_modules
 
 # server dependencies
 /_server/node_modules
@@ -34,7 +34,7 @@ chrome-profiler-events*.json
 .history/*
 
 # misc
-/.angular/cache
+/_angular/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
