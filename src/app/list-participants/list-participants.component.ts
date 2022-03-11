@@ -41,6 +41,7 @@ export class ListParticipantsComponent implements OnInit {
     this.userService.create(participant).subscribe(participant => {
       this.Participants.push(participant);
       this.hideDialog();
+      this.searchOnList();
     });
   }
 
