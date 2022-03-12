@@ -1,6 +1,6 @@
 const config = {
   db: {
-    host: "projetangularm2_db_1",
+    host: "projetangularm2-db-1",
     user: "root",
     password: "root",
     database: "smashtournament",
