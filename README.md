@@ -2,6 +2,8 @@
 
 Bienvenue sur notre projet de gestion de tournoi Smash Bros
 
+Ce projet a été réalisé pour le cours Angular de Master 2 Option Génie Informatique
+
 Membres du groupe:
   - Dartevelle Jimmy
   - Maskio Alexis
@@ -29,19 +31,19 @@ Un dernier conteneur est présent pour pouvoir accéder à la bdd de manière gr
 Si jamais un problème se présente avec le container d'angular ou du back-end, 
 il est possible de lancer le projet sans de la manière suivante:
 
-Dans le fichier `_server/config.js` ligne 3, remplacer `projetangularm2_db_1` par `localhost`, pour que le serveur puisse se connecter à la base de données
+Dans le fichier `_server/config.js` ligne 3, remplacer `db_mysql` par `localhost`, pour que le serveur puisse se connecter à la base de données
 
 Dans le fichier `_server/url.js` ligne 8, remplacer `data/picture` par `_server/data/picture`, pour que le serveur puisse accèder aux images
 
 On peut ensuite lancer le projet:
-- Lancer le front : `npm start`
-- Lancer le back : `npm run server`
 - Lancer la bdd et phpMyAdmin : `docker-compose up db myadmin`
+- Lancer le back : `npm run server`
+- Lancer le front : `npm start`
+
+***Remarque: pour le premier lancement, lancer la commande `npm install` à la racine et dans le dossier `_server`***
 
 
 ## Enjoy :)
-
-
 
 
 ---
